@@ -1,0 +1,22 @@
+# Pacotes que NÃO entram no Sururu (prioridade -1 = nunca instalar).
+# Chegavam como "recomendados" de outros pacotes e deixavam a ISO com mais de 2 GB.
+
+# Fontes de idiomas asiáticos e variações raras (~700 MB)
+Package: fonts-noto-extra fonts-noto-cjk fonts-noto-cjk-extra fonts-noto-ui-extra
+Pin: release *
+Pin-Priority: -1
+
+# Suíte de escritório (quem quiser instala depois com apt)
+Package: libreoffice*
+Pin: release *
+Pin-Priority: -1
+
+# Ferramenta de imagens de container que duplica o podman/docker
+Package: buildah
+Pin: release *
+Pin-Priority: -1
+
+# Emulador: só é usado para testar a ISO, não dentro dela
+Package: qemu-system-x86 qemu-system-data qemu-system-gui
+Pin: release *
+Pin-Priority: -1

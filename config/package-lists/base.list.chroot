@@ -5,7 +5,25 @@ live-config-systemd
 calamares
 calamares-settings-debian
 firmware-linux-free
+# Firmwares escolhidos a dedo (o live-build instalava TODOS, inclusive de
+# placas de servidor de datacenter, e a ISO passava de 2 GB):
+# Wi-Fi e Bluetooth de notebook
+firmware-iwlwifi
+firmware-realtek
+firmware-atheros
+firmware-brcm80211
+firmware-mediatek
+firmware-libertas
+# Vídeo e som
+firmware-amd-graphics
+firmware-intel-graphics
+firmware-nvidia-graphics
+firmware-intel-sound
+firmware-sof-signed
+# Diversos (inclui firmwares de microcódigo e periféricos comuns)
 firmware-misc-nonfree
+intel-microcode
+amd64-microcode
 locales
 console-setup
 keyboard-configuration

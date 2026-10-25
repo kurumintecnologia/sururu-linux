@@ -15,4 +15,5 @@ lb config noauto \
   --image-name "sururu-isaac" \
   --memtest none \
   --chroot-squashfs-compression-type xz \
+  --firmware-chroot false \
   "${@}"
