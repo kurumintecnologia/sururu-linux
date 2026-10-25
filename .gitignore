@@ -28,3 +28,10 @@ __pycache__/
 # gerado pelo scripts/tema-boot.sh a partir do live-build
 config/bootloaders/
 config/includes.chroot/etc/default/
+# criados pelo lb config (atalhos para o live-build da máquina)
+config/hooks/normal/
+config/hooks/live/0010-disable-kexec-tools.hook.chroot
+config/hooks/live/0050-disable-sysvinit-tmpfs.hook.chroot
+config/package-lists/live.list.chroot
+# logs soltos
+wget-log*

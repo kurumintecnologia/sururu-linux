@@ -13,7 +13,21 @@ if [ ! -d "$ORIGEM" ]; then
 fi
 
 rm -rf "$DESTINO"
-cp -rL "$ORIGEM" "$DESTINO"
+# -a preserva os atalhos (ex.: isolinux.bin -> /usr/lib/ISOLINUX/...). O
+# live-build resolve esses atalhos sozinho durante o build.
+cp -a "$ORIGEM" "$DESTINO"
+
+# Atalhos de pasta que apontam para o modelo original passam a apontar para a
+# nossa cópia (assim o tema vale também para o grub-efi, por exemplo)
+find "$DESTINO" -type l | while read -r link; do
+  alvo=$(readlink "$link")
+  case "$alvo" in
+    "$ORIGEM"/*)
+      novo="$(pwd)/$DESTINO/${alvo#"$ORIGEM"/}"
+      [ -d "$novo" ] && ln -sfn "$(realpath --relative-to="$(dirname "$link")" "$novo")" "$link"
+      ;;
+  esac
+done
 
 # 1. Fundo: troca o splash SVG (com o capacete) pelo nosso PNG
 find "$DESTINO" \( -name 'splash.svg' -o -name 'splash.svg.in' \) -delete
