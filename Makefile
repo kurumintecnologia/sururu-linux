@@ -3,10 +3,16 @@
 
 INC := config/includes.chroot
 
+
+.PHONY: tamanho
 .PHONY: deps prepare config build test clean checksum arte pngs docs site central
 
 deps:
 	sudo apt install -y live-build qemu-system-x86 xorriso python3
+
+# Mostra o tamanho da ISO (o GitHub aceita até 2048 MB por arquivo)
+tamanho:
+	@ls -lh sururu-isaac-*.hybrid.iso && du -m sururu-isaac-*.hybrid.iso | awk '{ if ($$1 >= 2048) print "ATENÇÃO: passou de 2048 MB"; else print "OK: abaixo de 2048 MB" }'
 
 arte:
 	python3 artwork/gerar-wallpapers.py

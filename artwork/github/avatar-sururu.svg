@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+<defs>
+<linearGradient id="casca" x1="0.15" y1="0.9" x2="0.85" y2="0.1">
+  <stop offset="0" stop-color="#3A3463"/><stop offset="0.55" stop-color="#1F5A66"/><stop offset="1" stop-color="#3B9A7C"/>
+</linearGradient>
+<linearGradient id="nacar" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#E7F1EF"/><stop offset="1" stop-color="#A9C9D0"/>
+</linearGradient>
+<linearGradient id="fundo" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#14122A"/><stop offset="0.55" stop-color="#0F2B36"/><stop offset="1" stop-color="#0C3A3E"/>
+</linearGradient>
+<radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#2F7A63" stop-opacity="0.45"/><stop offset="1" stop-color="#2F7A63" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="500" height="500" fill="url(#fundo)"/>
+<path d="M-544 0 L-44 500 M-44 0 L-544 500 M-510 0 L-10 500 M-10 0 L-510 500 M-476 0 L24 500 M24 0 L-476 500 M-442 0 L58 500 M58 0 L-442 500 M-408 0 L92 500 M92 0 L-408 500 M-374 0 L126 500 M126 0 L-374 500 M-340 0 L160 500 M160 0 L-340 500 M-306 0 L194 500 M194 0 L-306 500 M-272 0 L228 500 M228 0 L-272 500 M-238 0 L262 500 M262 0 L-238 500 M-204 0 L296 500 M296 0 L-204 500 M-170 0 L330 500 M330 0 L-170 500 M-136 0 L364 500 M364 0 L-136 500 M-102 0 L398 500 M398 0 L-102 500 M-68 0 L432 500 M432 0 L-68 500 M-34 0 L466 500 M466 0 L-34 500 M0 0 L500 500 M500 0 L0 500 M34 0 L534 500 M534 0 L34 500 M68 0 L568 500 M568 0 L68 500 M102 0 L602 500 M602 0 L102 500 M136 0 L636 500 M636 0 L136 500 M170 0 L670 500 M670 0 L170 500 M204 0 L704 500 M704 0 L204 500 M238 0 L738 500 M738 0 L238 500 M272 0 L772 500 M772 0 L272 500 M306 0 L806 500 M806 0 L306 500 M340 0 L840 500 M840 0 L340 500 M374 0 L874 500 M874 0 L374 500 M408 0 L908 500 M908 0 L408 500 M442 0 L942 500 M942 0 L442 500 M476 0 L976 500 M976 0 L476 500 M510 0 L1010 500 M1010 0 L510 500 M544 0 L1044 500 M1044 0 L544 500" stroke="#A9C9D0" stroke-width="1.2" fill="none" opacity="0.1"/>
+<ellipse cx="250" cy="250" rx="210" ry="190" fill="url(#halo)"/>
+<g transform="translate(110 110) scale(2.19)">
+<g>
+  <path d="M24 106 C14 86 20 52 44 30 C62 14 88 10 104 20 C118 30 116 52 102 70 C86 92 58 108 34 110 C29 110 26 109 24 106 Z" fill="url(#casca)"/>
+  <path d="M46 34 C62 20 86 16 100 25 C110 32 110 47 100 61" fill="none" stroke="url(#nacar)" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <path d="M30 100 C44 80 62 60 92 40" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M34 104 C54 94 74 80 98 58" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <circle cx="92" cy="40" r="5" fill="#E7F1EF"/>
+  <circle cx="98" cy="58" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="62" cy="66" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="29" cy="103" r="7" fill="#F2B134"/>
+</g></g>
+</svg>

@@ -1,16 +1,33 @@
-# Desktop leve (XFCE) com a cara do Sururu
-task-xfce-desktop
+# Desktop XFCE enxuto, escolhido pacote por pacote.
+# (O task-xfce-desktop puxava LibreOffice, players e jogos e deixava a ISO com mais
+#  de 2 GB, o limite do GitHub por arquivo.)
+xfce4
+xfce4-terminal
+xfce4-whiskermenu-plugin
+xfce4-pulseaudio-plugin
+xfce4-power-manager
+xfce4-notifyd
+xfce4-screenshooter
+xfce4-taskmanager
+thunar-archive-plugin
+xarchiver
+ristretto
+atril
+mousepad
+pavucontrol
+pipewire-audio
 lightdm
 lightdm-gtk-greeter
-xfce4-whiskermenu-plugin
-xfce4-terminal
-mousepad
+network-manager-gnome
+blueman
+gvfs-backends
+xdg-user-dirs
 firefox-esr
 firefox-esr-l10n-pt-br
-network-manager-gnome
 papirus-icon-theme
 greybird-gtk-theme
 fonts-ibm-plex
 fonts-jetbrains-mono
-fonts-noto
+fonts-noto-core
+fonts-noto-color-emoji
 librsvg2-common

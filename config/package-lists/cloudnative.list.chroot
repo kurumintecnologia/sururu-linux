@@ -1,6 +1,6 @@
 # Containers e utilitários cloud native dos repositórios do Debian.
-# kubectl, helm, k9s e kind vêm do binário oficial (hook 0500), porque o
-# Debian não empacota todos ou empacota versões antigas.
+# kubectl, helm, k9s e kind vêm do binário oficial (hook 0500).
+# O QEMU saiu da ISO: ele só é usado para testar a ISO no computador de quem a gera.
 docker.io
 podman
 skopeo
@@ -10,4 +10,3 @@ bash-completion
 tmux
 openssh-client
 python3
-qemu-system-x86

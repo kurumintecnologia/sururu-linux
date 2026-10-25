@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+<defs>
+<linearGradient id="casca" x1="0.15" y1="0.9" x2="0.85" y2="0.1">
+  <stop offset="0" stop-color="#3A3463"/><stop offset="0.55" stop-color="#1F5A66"/><stop offset="1" stop-color="#3B9A7C"/>
+</linearGradient>
+<linearGradient id="nacar" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#E7F1EF"/><stop offset="1" stop-color="#A9C9D0"/>
+</linearGradient>
+<linearGradient id="fundo" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#14122A"/><stop offset="0.55" stop-color="#0F2B36"/><stop offset="1" stop-color="#0C3A3E"/>
+</linearGradient>
+<radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#2F7A63" stop-opacity="0.45"/><stop offset="1" stop-color="#2F7A63" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="1280" height="640" fill="url(#fundo)"/>
+<path d="M-720 0 L-80 640 M-80 0 L-720 640 M-680 0 L-40 640 M-40 0 L-680 640 M-640 0 L0 640 M0 0 L-640 640 M-600 0 L40 640 M40 0 L-600 640 M-560 0 L80 640 M80 0 L-560 640 M-520 0 L120 640 M120 0 L-520 640 M-480 0 L160 640 M160 0 L-480 640 M-440 0 L200 640 M200 0 L-440 640 M-400 0 L240 640 M240 0 L-400 640 M-360 0 L280 640 M280 0 L-360 640 M-320 0 L320 640 M320 0 L-320 640 M-280 0 L360 640 M360 0 L-280 640 M-240 0 L400 640 M400 0 L-240 640 M-200 0 L440 640 M440 0 L-200 640 M-160 0 L480 640 M480 0 L-160 640 M-120 0 L520 640 M520 0 L-120 640 M-80 0 L560 640 M560 0 L-80 640 M-40 0 L600 640 M600 0 L-40 640 M0 0 L640 640 M640 0 L0 640 M40 0 L680 640 M680 0 L40 640 M80 0 L720 640 M720 0 L80 640 M120 0 L760 640 M760 0 L120 640 M160 0 L800 640 M800 0 L160 640 M200 0 L840 640 M840 0 L200 640 M240 0 L880 640 M880 0 L240 640 M280 0 L920 640 M920 0 L280 640 M320 0 L960 640 M960 0 L320 640 M360 0 L1000 640 M1000 0 L360 640 M400 0 L1040 640 M1040 0 L400 640 M440 0 L1080 640 M1080 0 L440 640 M480 0 L1120 640 M1120 0 L480 640 M520 0 L1160 640 M1160 0 L520 640 M560 0 L1200 640 M1200 0 L560 640 M600 0 L1240 640 M1240 0 L600 640 M640 0 L1280 640 M1280 0 L640 640 M680 0 L1320 640 M1320 0 L680 640 M720 0 L1360 640 M1360 0 L720 640 M760 0 L1400 640 M1400 0 L760 640 M800 0 L1440 640 M1440 0 L800 640 M840 0 L1480 640 M1480 0 L840 640 M880 0 L1520 640 M1520 0 L880 640 M920 0 L1560 640 M1560 0 L920 640 M960 0 L1600 640 M1600 0 L960 640 M1000 0 L1640 640 M1640 0 L1000 640 M1040 0 L1680 640 M1680 0 L1040 640 M1080 0 L1720 640 M1720 0 L1080 640 M1120 0 L1760 640 M1760 0 L1120 640 M1160 0 L1800 640 M1800 0 L1160 640 M1200 0 L1840 640 M1840 0 L1200 640 M1240 0 L1880 640 M1880 0 L1240 640 M1280 0 L1920 640 M1920 0 L1280 640 M1320 0 L1960 640 M1960 0 L1320 640 M1360 0 L2000 640 M2000 0 L1360 640" stroke="#A9C9D0" stroke-width="1.2" fill="none" opacity="0.07"/>
+<ellipse cx="250" cy="320" rx="260" ry="230" fill="url(#halo)"/>
+<g transform="translate(110 180) scale(2.2)">
+<g>
+  <path d="M24 106 C14 86 20 52 44 30 C62 14 88 10 104 20 C118 30 116 52 102 70 C86 92 58 108 34 110 C29 110 26 109 24 106 Z" fill="url(#casca)"/>
+  <path d="M46 34 C62 20 86 16 100 25 C110 32 110 47 100 61" fill="none" stroke="url(#nacar)" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <path d="M30 100 C44 80 62 60 92 40" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M34 104 C54 94 74 80 98 58" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <circle cx="92" cy="40" r="5" fill="#E7F1EF"/>
+  <circle cx="98" cy="58" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="62" cy="66" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="29" cy="103" r="7" fill="#F2B134"/>
+</g></g>
+<text x="440" y="300" font-family="IBM Plex Sans, Inter Display, Inter, sans-serif" font-size="96" letter-spacing="-2" fill="#E7F1EF"><tspan font-weight="600">sururu</tspan><tspan font-weight="300" fill="#7CC4A8"> linux</tspan></text>
+<text x="444" y="362" font-family="IBM Plex Sans, Inter, sans-serif" font-size="30" fill="#A9C9D0">Linux, containers e Kubernetes</text>
+<text x="444" y="402" font-family="IBM Plex Sans, Inter, sans-serif" font-size="30" fill="#A9C9D0">sem bicho de sete cabeças.</text>
+<text x="444" y="470" font-family="IBM Plex Sans, Inter, sans-serif" font-size="24" fill="#F2B134">Grátis, livre e baseado no Debian 13</text>
+<rect y="604" width="1280" height="36" fill="#0B2A2E"/>
+<text x="640" y="628" text-anchor="middle" font-family="IBM Plex Sans, Inter, sans-serif" font-size="18" fill="#A9C9D0">sururu.kurumintecnologia.com.br</text>
+</svg>

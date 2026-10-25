@@ -40,6 +40,15 @@ jobs:
           lb build 2>&1 | tee build.log
           ls -lh sururu-isaac-*.hybrid.iso
 
+      - name: Conferir o tamanho da ISO (o GitHub aceita até 2 GB por arquivo)
+        run: |
+          TAM=$(stat -c %s sururu-isaac-*.hybrid.iso)
+          echo "Tamanho da ISO: $((TAM / 1024 / 1024)) MB" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$TAM" -ge 2147483648 ]; then
+            echo "::error::A ISO tem $((TAM / 1024 / 1024)) MB e passou do limite de 2048 MB do GitHub. Tire pacotes das listas em config/package-lists."
+            exit 1
+          fi
+
       - name: Guardar o log do build (para investigar erros)
         if: always()
         uses: actions/upload-artifact@v4
