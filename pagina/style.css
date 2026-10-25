@@ -139,3 +139,7 @@ pre { background: var(--lagoa-funda); color: var(--agua); border-radius: 10px; p
 .miudo-escuro { font-size: .9rem; }
 .copiado { color: var(--mangue); font-weight: 600; min-height: 1.5em; margin: 0; }
 @media (max-width: 900px) { .cafe { flex-direction: column; align-items: flex-start; } }
+
+/* botão de download direto */
+.botao-detalhe { font-weight: 400; opacity: .75; margin-left: 6px; font-size: .9em; }
+.miudo a { color: var(--nacar); }
