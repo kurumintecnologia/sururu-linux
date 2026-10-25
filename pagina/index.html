@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sururu Linux: Linux, containers e Kubernetes sem bicho de sete cabeças</title>
+  <meta name="description" content="Distribuição Linux brasileira, baseada no Debian, que boota do pendrive com um cluster Kubernetes e laboratórios em português que se corrigem sozinhos. Grátis e livre.">
+  <meta property="og:title" content="Sururu Linux">
+  <meta property="og:description" content="Linux, containers e Kubernetes sem bicho de sete cabeças. Grátis, livre e em português.">
+  <meta property="og:image" content="https://sururu.kurumintecnologia.com.br/img/compartilhar.jpg">
+  <meta property="og:url" content="https://sururu.kurumintecnologia.com.br/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="img/sururu-simbolo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="#" aria-label="Sururu Linux, início">
+      <img src="img/sururu-simbolo.svg" alt="" width="34" height="34">
+      <span><b>sururu</b> linux</span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="#como">Como funciona</a>
+      <a href="#central">Central</a>
+      <a href="#escolas">Escolas</a>
+      <a href="docs/">Documentação</a>
+      <a href="https://github.com/kurumintecnologia/sururu-linux">GitHub</a>
+    </nav>
+  </header>
+
+  <section class="heroi">
+    <picture class="heroi-fundo" aria-hidden="true">
+      <source media="(max-width: 700px)" srcset="img/lagoa-pequena.jpg">
+      <img src="img/lagoa.jpg" alt="">
+    </picture>
+    <div class="heroi-texto">
+      <p class="versao">Versão 2027 "Isaac", baseada no Debian 13</p>
+      <h1>Linux, containers e Kubernetes sem bicho de sete cabeças.</h1>
+      <p class="sub">Uma distribuição brasileira que boota do pendrive com um cluster Kubernetes de verdade e laboratórios em português que se corrigem sozinhos.</p>
+      <div class="acoes">
+        <a class="botao principal" href="https://github.com/kurumintecnologia/sururu-linux/releases/latest">Baixar o Sururu</a>
+        <a class="botao" href="docs/comecar/">Como gravar no pendrive</a>
+      </div>
+      <p class="miudo">Grátis e livre (GPL-3.0). Roda em computador com 4 GB de memória.</p>
+    </div>
+  </section>
+
+  <section class="passos" id="como">
+    <h2>Do pendrive ao cluster</h2>
+    <ol>
+      <li>
+        <h3>Grave a ISO num pendrive</h3>
+        <p>Com o Rufus, o balenaEtcher ou o Ventoy. Cerca de 2 GB.</p>
+      </li>
+      <li>
+        <h3>Dê boot</h3>
+        <p>Funciona com Secure Boot ligado. Em menos de um minuto você está na área de trabalho, em português, com teclado ABNT2.</p>
+      </li>
+      <li>
+        <h3>Crie seu cluster</h3>
+        <p>Abra a Central Sururu e clique em "Criar meu cluster". Pode quebrar à vontade: é só apagar e criar de novo.</p>
+        <pre><code>kubectl get nodes
+NAME                   STATUS   ROLES
+sururu-control-plane   Ready    control-plane
+sururu-worker          Ready    &lt;none&gt;</code></pre>
+      </li>
+    </ol>
+  </section>
+
+  <section class="central" id="central">
+    <div class="central-texto">
+      <h2>A Central Sururu</h2>
+      <p>O coração do sistema. Um painel em português, que roda só no seu computador, sem conta e sem internet.</p>
+      <dl>
+        <dt>Cluster com um clique</dt>
+        <dd>Crie, veja os nós e os pods, apague. Tudo com o kind, por baixo.</dd>
+        <dt>Laboratórios que se corrigem</dt>
+        <dd>Você faz no terminal, clica em Verificar e a Central confere o seu sistema de verdade, com uma dica para cada erro.</dd>
+        <dt>Modo prova</dt>
+        <dd>Quatro tarefas, 30 minutos, sem os comandos prontos. O treino mais próximo da CKA que você vai ter de graça.</dd>
+      </dl>
+    </div>
+    <figure class="tela">
+      <img src="img/central-inicio.jpg" alt="Tela inicial da Central Sururu, com as trilhas Linux, Containers e Kubernetes e o progresso de cada uma" width="1366" height="952" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="historias">
+    <h2>Aprender com histórias daqui</h2>
+    <p class="intro">Nada de "foo" e "bar". Cada laboratório começa com um problema de gente de verdade.</p>
+    <div class="casos">
+      <article>
+        <span class="trilha">Linux</span>
+        <h3>A bodega do Seu Zé</h3>
+        <p>Seu Zé vai abrir uma bodega em Palmeira dos Índios e pediu ajuda para organizar as anotações no computador.</p>
+        <code>mkdir, chmod, scripts em Bash</code>
+      </article>
+      <article>
+        <span class="trilha">Containers</span>
+        <h3>A pousada em Maragogi</h3>
+        <p>A pousada quer o site no ar hoje. Você mostra que, com um container, isso leva segundos.</p>
+        <code>docker run, Dockerfile, imagens</code>
+      </article>
+      <article>
+        <span class="trilha">Kubernetes</span>
+        <h3>A loja da Dona Cida</h3>
+        <p>A loja de sururu vende pela internet e não pode cair. Três réplicas, um Service e uma atualização sem derrubar nada.</p>
+        <code>Deployment, Service, ConfigMap, rollout</code>
+      </article>
+    </div>
+  </section>
+
+  <section class="escolas" id="escolas">
+    <div>
+      <h2>Feito para sala de aula</h2>
+      <p>O mesmo pendrive para a turma inteira. Roda sem instalar, funciona offline e não pede licença nem conta. Ideal para escolas técnicas, institutos federais, cursos de TI e oficinas.</p>
+      <a class="botao" href="https://kurumintecnologia.com.br/">Quero levar para a minha turma</a>
+    </div>
+    <ul class="fatos">
+      <li><b>Debian 13</b> estável por baixo, com segurança direto do Debian</li>
+      <li><b>kubectl, kind, helm, k9s, docker e podman</b> já instalados</li>
+      <li><b>Desktop leve</b> em XFCE, que roda em notebook simples</li>
+      <li><b>ISO assinada</b> e com lista de componentes (SBOM) a cada versão</li>
+    </ul>
+  </section>
+
+  <section class="comunidade">
+    <h2>Feito pela comunidade</h2>
+    <div class="tres">
+      <div>
+        <h3>Escreva um laboratório</h3>
+        <p>Um laboratório é um arquivo JSON. Tem modelo e passo a passo na documentação.</p>
+        <a href="docs/novo-laboratorio/">Como escrever</a>
+      </div>
+      <div>
+        <h3>Conte como foi</h3>
+        <p>Testou num computador diferente? Achou um erro? Abra uma issue no GitHub.</p>
+        <a href="https://github.com/kurumintecnologia/sururu-linux/issues">Abrir uma issue</a>
+      </div>
+      <div>
+        <h3>Pague um café</h3>
+        <p>O Sururu é e vai continuar grátis. Se ele te ajudou, um café ajuda a manter.</p>
+        <a href="docs/apoiar/">Apoiar o projeto</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <div class="trama" aria-hidden="true"></div>
+    <p><b>sururu</b> linux é software livre, feito em Alagoas pela comunidade, com a <a href="https://kurumintecnologia.com.br/">Kurumin Tecnologia</a>.</p>
+    <p class="nota">Baseado no Debian, mas não é um produto oficial do Projeto Debian. O nome vem do sururu, o marisco das lagoas alagoanas.</p>
+  </footer>
+</body>
+</html>

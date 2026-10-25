@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768" width="1024" height="768">
+<defs>
+<linearGradient id="casca" x1="0.15" y1="0.9" x2="0.85" y2="0.1">
+  <stop offset="0" stop-color="#3A3463"/><stop offset="0.55" stop-color="#1F5A66"/><stop offset="1" stop-color="#3B9A7C"/>
+</linearGradient>
+<linearGradient id="nacar" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#E7F1EF"/><stop offset="1" stop-color="#A9C9D0"/>
+</linearGradient>
+<linearGradient id="fundo" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#14122A"/><stop offset="0.55" stop-color="#0F2B36"/><stop offset="1" stop-color="#0C3A3E"/>
+</linearGradient>
+<radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#2F7A63" stop-opacity="0.45"/><stop offset="1" stop-color="#2F7A63" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="1024" height="768" fill="url(#fundo)"/>
+<path d="M-812 0 L-44 768 M-44 0 L-812 768 M-784 0 L-16 768 M-16 0 L-784 768 M-756 0 L12 768 M12 0 L-756 768 M-728 0 L40 768 M40 0 L-728 768 M-700 0 L68 768 M68 0 L-700 768 M-672 0 L96 768 M96 0 L-672 768 M-644 0 L124 768 M124 0 L-644 768 M-616 0 L152 768 M152 0 L-616 768 M-588 0 L180 768 M180 0 L-588 768 M-560 0 L208 768 M208 0 L-560 768 M-532 0 L236 768 M236 0 L-532 768 M-504 0 L264 768 M264 0 L-504 768 M-476 0 L292 768 M292 0 L-476 768 M-448 0 L320 768 M320 0 L-448 768 M-420 0 L348 768 M348 0 L-420 768 M-392 0 L376 768 M376 0 L-392 768 M-364 0 L404 768 M404 0 L-364 768 M-336 0 L432 768 M432 0 L-336 768 M-308 0 L460 768 M460 0 L-308 768 M-280 0 L488 768 M488 0 L-280 768 M-252 0 L516 768 M516 0 L-252 768 M-224 0 L544 768 M544 0 L-224 768 M-196 0 L572 768 M572 0 L-196 768 M-168 0 L600 768 M600 0 L-168 768 M-140 0 L628 768 M628 0 L-140 768 M-112 0 L656 768 M656 0 L-112 768 M-84 0 L684 768 M684 0 L-84 768 M-56 0 L712 768 M712 0 L-56 768 M-28 0 L740 768 M740 0 L-28 768 M0 0 L768 768 M768 0 L0 768 M28 0 L796 768 M796 0 L28 768 M56 0 L824 768 M824 0 L56 768 M84 0 L852 768 M852 0 L84 768 M112 0 L880 768 M880 0 L112 768 M140 0 L908 768 M908 0 L140 768 M168 0 L936 768 M936 0 L168 768 M196 0 L964 768 M964 0 L196 768 M224 0 L992 768 M992 0 L224 768 M252 0 L1020 768 M1020 0 L252 768 M280 0 L1048 768 M1048 0 L280 768 M308 0 L1076 768 M1076 0 L308 768 M336 0 L1104 768 M1104 0 L336 768 M364 0 L1132 768 M1132 0 L364 768 M392 0 L1160 768 M1160 0 L392 768 M420 0 L1188 768 M1188 0 L420 768 M448 0 L1216 768 M1216 0 L448 768 M476 0 L1244 768 M1244 0 L476 768 M504 0 L1272 768 M1272 0 L504 768 M532 0 L1300 768 M1300 0 L532 768 M560 0 L1328 768 M1328 0 L560 768 M588 0 L1356 768 M1356 0 L588 768 M616 0 L1384 768 M1384 0 L616 768 M644 0 L1412 768 M1412 0 L644 768 M672 0 L1440 768 M1440 0 L672 768 M700 0 L1468 768 M1468 0 L700 768 M728 0 L1496 768 M1496 0 L728 768 M756 0 L1524 768 M1524 0 L756 768 M784 0 L1552 768 M1552 0 L784 768 M812 0 L1580 768 M1580 0 L812 768 M840 0 L1608 768 M1608 0 L840 768 M868 0 L1636 768 M1636 0 L868 768 M896 0 L1664 768 M1664 0 L896 768 M924 0 L1692 768 M1692 0 L924 768 M952 0 L1720 768 M1720 0 L952 768 M980 0 L1748 768 M1748 0 L980 768 M1008 0 L1776 768 M1776 0 L1008 768 M1036 0 L1804 768 M1804 0 L1036 768 M1064 0 L1832 768 M1832 0 L1064 768" stroke="#A9C9D0" stroke-width="1" fill="none" opacity="0.07"/>
+<ellipse cx="512.0" cy="92.0" rx="212.79999999999998" ry="156.79999999999998" fill="url(#halo)"/>
+<g transform="translate(456.0 36) scale(0.875)">
+<g>
+  <path d="M24 106 C14 86 20 52 44 30 C62 14 88 10 104 20 C118 30 116 52 102 70 C86 92 58 108 34 110 C29 110 26 109 24 106 Z" fill="url(#casca)"/>
+  <path d="M46 34 C62 20 86 16 100 25 C110 32 110 47 100 61" fill="none" stroke="url(#nacar)" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <path d="M30 100 C44 80 62 60 92 40" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M34 104 C54 94 74 80 98 58" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <circle cx="92" cy="40" r="5" fill="#E7F1EF"/>
+  <circle cx="98" cy="58" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="62" cy="66" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="29" cy="103" r="7" fill="#F2B134"/>
+</g></g>
+<text x="512.0" y="222" text-anchor="middle" font-family="IBM Plex Sans, Inter Display, Inter, DejaVu Sans, sans-serif" font-size="62" letter-spacing="-1.5" fill="#E7F1EF"><tspan font-weight="600">sururu</tspan><tspan font-weight="300" fill="#7CC4A8"> linux</tspan></text>
+<text x="512.0" y="258" text-anchor="middle" font-family="IBM Plex Sans, Inter Display, Inter, DejaVu Sans, sans-serif" font-size="19" fill="#A9C9D0" letter-spacing="3">2027  ISAAC</text>
+<rect x="208" y="322" width="608" height="180" rx="10" fill="#0B2A2E" opacity="0.55"/>
+<rect y="714.24" width="1024" height="53.75999999999999" fill="#0B2A2E"/><path d="M0 714.24 Q256.0 700.416 512.0 709.6320000000001 Q798.72 717.312 1024 703.488 L1024 714.24 Z" fill="#0B2A2E"/><rect x="30" y="751" width="70" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="90" y="755" width="60" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="150" y="759" width="50" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="210" y="750" width="40" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="270" y="754" width="100" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="330" y="758" width="90" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="390" y="749" width="80" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="450" y="753" width="70" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="510" y="757" width="60" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="570" y="761" width="50" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="630" y="752" width="40" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="690" y="756" width="100" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="750" y="760" width="90" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="810" y="751" width="80" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="870" y="755" width="70" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="930" y="759" width="60" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="990" y="750" width="50" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/>
+<text x="512.0" y="746" text-anchor="middle" font-family="IBM Plex Sans, Inter Display, Inter, DejaVu Sans, sans-serif" font-size="17" fill="#A9C9D0" opacity="0.85">Linux, containers e Kubernetes sem bicho de sete cabeças</text>
+</svg>

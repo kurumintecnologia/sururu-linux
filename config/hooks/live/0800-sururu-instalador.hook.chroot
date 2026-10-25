@@ -1,0 +1,61 @@
+#!/bin/sh
+# Instalador (Calamares) com a cara do Sururu
+set -e
+LOGO=/usr/share/plymouth/themes/sururu/plymouth-logo.png
+
+# 1. O script do Debian que põe o ícone na área de trabalho quebra com nomes
+#    com espaço ("Área de trabalho"). Desligamos e usamos o sururu-boasvindas.
+for f in /etc/xdg/autostart/*.desktop; do
+  [ -f "$f" ] || continue
+  if grep -q "add-calamares-desktop-icon" "$f"; then
+    grep -q '^Hidden=true' "$f" || echo "Hidden=true" >> "$f"
+  fi
+done
+
+# 2. Nome e ícone no menu
+APP=/usr/share/applications/install-debian.desktop
+if [ -f "$APP" ]; then
+  sed -i -e 's/^Name=.*/Name=Instalar o Sururu Linux/' -e '/^Name\[/d' \
+         -e 's/^Comment=.*/Comment=Instale o Sururu no disco/' -e '/^Comment\[/d' \
+         -e '/^GenericName/d' -e 's/^Icon=.*/Icon=sururu/' "$APP"
+fi
+
+# 3. Marca Sururu dentro do Calamares (parte da marca do Debian e troca textos e imagens)
+ORIG=/etc/calamares/branding/debian
+DEST=/etc/calamares/branding/sururu
+if [ -d "$ORIG" ] && [ -f "$ORIG/branding.desc" ]; then
+  rm -rf "$DEST"
+  cp -a "$ORIG" "$DEST"
+  D="$DEST/branding.desc"
+  sed -i -E \
+    -e 's/^componentName:.*/componentName:  sururu/' \
+    -e 's/^([[:space:]]+productName:).*/\1         "Sururu Linux"/' \
+    -e 's/^([[:space:]]+shortProductName:).*/\1    "Sururu"/' \
+    -e 's/^([[:space:]]+version:).*/\1             "2027.1"/' \
+    -e 's/^([[:space:]]+shortVersion:).*/\1        "2027"/' \
+    -e 's/^([[:space:]]+versionedName:).*/\1       "Sururu Linux 2027 (Isaac)"/' \
+    -e 's/^([[:space:]]+shortVersionedName:).*/\1  "Sururu 2027"/' \
+    -e 's/^([[:space:]]+bootloaderEntryName:).*/\1 "Sururu"/' \
+    -e 's|^([[:space:]]+productUrl:).*|\1          "https://sururu.kurumintecnologia.com.br/"|' \
+    -e 's|^([[:space:]]+supportUrl:).*|\1          "https://github.com/kurumintecnologia/sururu-linux/issues"|' \
+    -e 's|^([[:space:]]+knownIssuesUrl:).*|\1      "https://github.com/kurumintecnologia/sururu-linux/issues"|' \
+    -e 's|^([[:space:]]+releaseNotesUrl:).*|\1     "https://sururu.kurumintecnologia.com.br/"|' \
+    -e 's/^([[:space:]]+sidebarBackground:).*/\1        "#0F3B40"/' \
+    -e 's/^([[:space:]]+sidebarText:).*/\1              "#E7F1EF"/' \
+    -e 's/^([[:space:]]+sidebarTextSelect:).*/\1        "#F2B134"/' \
+    -e 's/^([[:space:]]+sidebarTextCurrent:).*/\1       "#0F3B40"/' \
+    -e 's/^([[:space:]]+sidebarBackgroundCurrent:).*/\1 "#F2B134"/' \
+    -e 's/^slideshow:.*/slideshow:      "show.qml"/' \
+    "$D"
+  # imagens citadas no branding.desc passam a ser a concha
+  grep -E '^[[:space:]]+(productLogo|productIcon|productWelcome):' "$D" \
+    | sed -E 's/^[^:]+:[[:space:]]*"?([^"]+)"?.*/\1/' | while read -r img; do
+      case "$img" in /*) alvo="$img" ;; *) alvo="$DEST/$img" ;; esac
+      [ -f "$LOGO" ] && cp "$LOGO" "$alvo"
+    done
+  [ -f "$LOGO" ] && cp "$LOGO" "$DEST/logo.png"
+  [ -f /usr/share/sururu/calamares/show.qml ] && cp /usr/share/sururu/calamares/show.qml "$DEST/show.qml"
+  for s in /etc/calamares/settings.conf /usr/share/calamares/settings.conf; do
+    [ -f "$s" ] && sed -i -E 's/^branding:.*/branding: sururu/' "$s"
+  done
+fi

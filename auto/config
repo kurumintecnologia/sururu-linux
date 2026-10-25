@@ -8,7 +8,7 @@ lb config noauto \
   --distribution trixie \
   --archive-areas "main contrib non-free-firmware" \
   --debian-installer none \
-  --bootappend-live "boot=live components quiet splash console=tty0 console=ttyS0,115200 locales=pt_BR.UTF-8 keyboard-layouts=br timezone=America/Sao_Paulo live-config.user-default-groups=audio,cdrom,dip,floppy,video,plugdev,netdev,powerdev,scanner,bluetooth,docker" \
+  --bootappend-live "boot=live components quiet splash console=ttyS0,115200 console=tty0 live-config.user-fullname=Estudante locales=pt_BR.UTF-8 keyboard-layouts=br timezone=America/Sao_Paulo live-config.user-default-groups=audio,cdrom,dip,floppy,video,plugdev,netdev,powerdev,scanner,bluetooth,docker" \
   --iso-application "Sururu Linux" \
   --iso-publisher "Kurumin Tecnologia" \
   --iso-volume "SURURU_ISAAC" \

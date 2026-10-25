@@ -167,8 +167,10 @@ async function atualizarCluster() {
     palco.append(h("div", { class: "vazio" },
       h("h2", {}, "Você ainda não tem um cluster"),
       h("p", {}, "Escolha o tamanho e clique em \"Criar meu cluster\". Leva uns 2 minutos na primeira vez, porque baixa a imagem do Kubernetes.")));
+    avisoEspaco();
     return;
   }
+  $("#espaco-alerta")?.remove();
   c.nos.forEach((n) => palco.append(
     h("div", { class: "node" + (n.papel === "control-plane" ? " cp" : "") },
       h("div", { class: "papel" }, n.papel === "control-plane" ? "Control-plane" : "Worker"),
@@ -177,6 +179,31 @@ async function atualizarCluster() {
       h("div", { class: "papel" }, n.versao))));
   $("#pods").replaceChildren(...c.pods.map((p) =>
     h("tr", {}, h("td", {}, p.ns), h("td", {}, p.nome), h("td", {}, p.fase))));
+}
+
+/* No modo live o "disco" é a memória RAM. Sem espaço, o kind trava no meio. */
+let forcarCriacao = false;
+function avisoEspaco() {
+  $("#espaco-alerta")?.remove();
+  const s = ESTADO.sistema;
+  const minimo = ESTADO.minimo_cluster_gb || 6;
+  const pouco = s.containers_livre_gb < minimo;
+  $("#criar").disabled = pouco && !forcarCriacao;
+  if (!pouco) return;
+  const alerta = h("div", { class: "alerta", id: "espaco-alerta" },
+    h("strong", {}, `Falta espaço para o cluster. `),
+    `O Kubernetes precisa de uns ${minimo} GB livres e aqui há só ${s.containers_livre_gb} GB. `,
+    s.live
+      ? "No modo live, o \"disco\" é a memória RAM, por isso acaba rápido. "
+      : "Libere espaço no disco antes de criar. ",
+    s.live ? h("ul", {},
+      h("li", {}, "Instale o Sururu no disco pelo ícone \"Instalar o Sururu Linux\" na área de trabalho (recomendado)."),
+      h("li", {}, "Ou use um pendrive com persistência (o Ventoy faz isso), para ter espaço de verdade."),
+      h("li", {}, "Numa máquina virtual, dê pelo menos 8 GB de memória.")) : null,
+    h("button", { class: "botao pequeno", type: "button", onclick: () => {
+      forcarCriacao = true; $("#criar").disabled = false; avisar("Tudo bem, pode tentar. Se travar, é falta de espaço.");
+    } }, "Tentar mesmo assim"));
+  $("#cluster-acoes").before(alerta);
 }
 
 async function acompanhar(jobId, botao) {
@@ -348,6 +375,9 @@ async function corrigirProva() {
 async function carregarLabs() { LABS = await api("labs"); }
 
 async function iniciar() {
+  $("#ola").textContent = `${saudacao()}!`;
+  $("#medidas").replaceChildren(h("dt", {}, "Lendo..."), h("dd", {}, "Conferindo memória, disco e processador"));
+  $("#ferramentas").replaceChildren(h("li", {}, h("span", { class: "falta" }, "…"), h("span", {}, "Conferindo as ferramentas instaladas")));
   try {
     [ESTADO] = await Promise.all([api("estado"), carregarLabs()]);
   } catch (e) {

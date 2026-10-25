@@ -10,5 +10,5 @@ Prefere o terminal? Já vem com kubectl, helm, k9s, kind, docker e podman:
     kubectl get nodes
     k9s
 
-Documentação: https://kurumintecnologia.github.io/sururu-linux/
+Documentação: https://sururu.kurumintecnologia.com.br/docs/
 Escola Kurumin: https://kurumintecnologia.com.br/

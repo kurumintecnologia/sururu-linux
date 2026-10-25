@@ -35,3 +35,7 @@ config/hooks/live/0050-disable-sysvinit-tmpfs.hook.chroot
 config/package-lists/live.list.chroot
 # logs soltos
 wget-log*
+
+# copiados pelo make prepare
+config/includes.chroot/etc/skel/.face
+publico/

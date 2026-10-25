@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://kurumintecnologia.github.io/sururu-linux/">Documentação</a> ·
+  <a href="https://sururu.kurumintecnologia.com.br/docs/">Documentação</a> ·
   <a href="https://github.com/kurumintecnologia/sururu-linux/releases">Baixar a ISO</a> ·
   <a href="docs/contribuir.md">Contribuir</a> ·
   <a href="docs/apoiar.md">Apoiar</a>

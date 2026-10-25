@@ -1,8 +1,47 @@
 #!/bin/sh
-# Abre a Central Sururu só no primeiro login de cada usuário.
-MARCA="${XDG_CONFIG_HOME:-$HOME/.config}/sururu/boasvindas-vista"
-[ -f "$MARCA" ] && exit 0
-mkdir -p "$(dirname "$MARCA")"
-touch "$MARCA"
-sleep 4
+# Primeiro login de cada usuário no Sururu:
+#  1. aplica o papel de parede em todos os monitores conectados;
+#  2. no modo live, cria o ícone "Instalar o Sururu Linux" na área de trabalho;
+#  3. abre a Central Sururu.
+CONF="${XDG_CONFIG_HOME:-$HOME/.config}/sururu"
+WP=/usr/share/sururu/wallpaper/sururu-lagoa-dia.png
+mkdir -p "$CONF"
+
+# --- ícone do instalador (só no live, toda vez, pois a home do live é nova a cada boot)
+if [ -d /run/live/medium ] && [ -f /usr/share/applications/install-debian.desktop ]; then
+  DESK=$(xdg-user-dir DESKTOP 2>/dev/null || echo "$HOME/Desktop")
+  mkdir -p "$DESK"
+  ICONE="$DESK/instalar-sururu.desktop"
+  if [ ! -f "$ICONE" ]; then
+    sed -e 's/^Name=.*/Name=Instalar o Sururu Linux/' \
+        -e '/^Name\[/d' -e '/^GenericName/d' -e '/^Comment/d' \
+        -e 's/^Icon=.*/Icon=sururu/' \
+        /usr/share/applications/install-debian.desktop > "$ICONE"
+    echo "Comment=Instale no disco para guardar seu progresso" >> "$ICONE"
+    chmod +x "$ICONE"
+    # o XFCE só executa atalhos marcados como confiáveis
+    gio set -t string "$ICONE" metadata::xfce-exe-checksum \
+      "$(sha256sum "$ICONE" | cut -d' ' -f1)" 2>/dev/null || true
+    gio set "$ICONE" metadata::trusted true 2>/dev/null || true
+  fi
+fi
+
+# --- papel de parede em qualquer monitor (uma vez por usuário)
+if [ ! -f "$CONF/papel-de-parede-aplicado" ] && command -v xfconf-query >/dev/null; then
+  sleep 3
+  for mon in $(xrandr --listmonitors 2>/dev/null | awk 'NR>1 {print $NF}'); do
+    for ws in 0 1 2 3; do
+      base="/backdrop/screen0/monitor$mon/workspace$ws"
+      xfconf-query -c xfce4-desktop -p "$base/last-image" -n -t string -s "$WP" 2>/dev/null \
+        || xfconf-query -c xfce4-desktop -p "$base/last-image" -s "$WP"
+      xfconf-query -c xfce4-desktop -p "$base/image-style" -n -t int -s 5 2>/dev/null || true
+    done
+  done
+  touch "$CONF/papel-de-parede-aplicado"
+fi
+
+# --- Central Sururu (só no primeiro login)
+[ -f "$CONF/boasvindas-vista" ] && exit 0
+touch "$CONF/boasvindas-vista"
+sleep 2
 exec sururu-central

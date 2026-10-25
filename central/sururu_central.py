@@ -16,6 +16,7 @@ import argparse
 import json
 import os
 import platform
+import pwd
 import secrets
 import shutil
 import subprocess
@@ -23,6 +24,7 @@ import threading
 import time
 import uuid
 import webbrowser
+from concurrent.futures import ThreadPoolExecutor
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -36,6 +38,8 @@ PROGRESSO = DADOS / "progresso.json"
 CLUSTER = "sururu"
 TOKEN = secrets.token_urlsafe(24)
 PORTA = 8787
+# Espaço que o kind precisa para baixar e descompactar a imagem do Kubernetes
+MINIMO_CLUSTER_GB = float(os.environ.get("SURURU_MINIMO_GB", "6"))
 
 JOBS: dict[str, dict] = {}
 JOBS_LOCK = threading.Lock()
@@ -54,6 +58,8 @@ def rodar(cmd: list[str] | str, timeout: int = 20) -> tuple[int, str]:
         return r.returncode, (r.stdout + r.stderr).strip()
     except FileNotFoundError:
         return 127, "comando não encontrado"
+    except OSError as erro:
+        return 126, str(erro)
     except subprocess.TimeoutExpired:
         return 124, "tempo esgotado"
 
@@ -61,7 +67,7 @@ def rodar(cmd: list[str] | str, timeout: int = 20) -> tuple[int, str]:
 def versao(ferramenta: str, args: list[str]) -> str | None:
     if not shutil.which(ferramenta):
         return None
-    cod, saida = rodar([ferramenta, *args], timeout=8)
+    cod, saida = rodar([ferramenta, *args], timeout=5)
     linha = saida.splitlines()[0] if saida else ""
     return linha[:80] if cod == 0 else "instalado"
 
@@ -95,6 +101,24 @@ def lab_por_id(lab_id: str) -> dict | None:
 
 
 # ------------------------------------------------------------------- estado
+def nome_usuario() -> str:
+    """Primeiro nome do usuário (campo GECOS), ou o login."""
+    try:
+        info = pwd.getpwuid(os.getuid())
+        nome = info.pw_gecos.split(",")[0].strip()
+        return (nome.split()[0] if nome else info.pw_name).capitalize()
+    except (KeyError, IndexError):
+        return os.environ.get("USER", "estudante")
+
+
+def espaco_para_containers() -> float:
+    """Espaço livre onde o Docker guarda as imagens (GB). No modo live isso é RAM."""
+    for caminho in ("/var/lib/docker", "/var/lib", "/"):
+        if Path(caminho).exists():
+            return round(shutil.disk_usage(caminho).free / 1e9, 1)
+    return 0.0
+
+
 def info_sistema() -> dict:
     nome = "Sururu Linux"
     try:
@@ -120,7 +144,7 @@ def info_sistema() -> dict:
     return {
         "nome": nome,
         "kernel": platform.release(),
-        "usuario": os.environ.get("USER", "estudante"),
+        "usuario": nome_usuario(),
         "cpus": os.cpu_count() or 1,
         "carga": round(carga, 2),
         "mem_total_mb": mem_total,
@@ -128,6 +152,7 @@ def info_sistema() -> dict:
         "disco_total_gb": round(disco.total / 1e9, 1),
         "disco_livre_gb": round(disco.free / 1e9, 1),
         "live": Path("/run/live/medium").exists(),
+        "containers_livre_gb": espaco_para_containers(),
     }
 
 
@@ -140,13 +165,15 @@ def info_ferramentas() -> list[dict]:
         ("helm", ["version", "--short"], "Instala aplicações prontas no cluster."),
         ("k9s", ["version", "--short"], "Painel do cluster dentro do terminal."),
     ]
-    return [{"nome": n, "versao": versao(n, a), "para_que": d} for n, a, d in lista]
+    with ThreadPoolExecutor(max_workers=len(lista)) as pool:
+        versoes = list(pool.map(lambda item: versao(item[0], item[1]), lista))
+    return [{"nome": n, "versao": v, "para_que": d} for (n, _, d), v in zip(lista, versoes)]
 
 
 def docker_ok() -> dict:
     if not shutil.which("docker"):
         return {"ok": False, "motivo": "sem_docker"}
-    cod, saida = rodar(["docker", "info", "--format", "{{.ServerVersion}}"], timeout=10)
+    cod, saida = rodar(["docker", "info", "--format", "{{.ServerVersion}}"], timeout=5)
     if cod == 0:
         return {"ok": True}
     if "permission denied" in saida.lower():
@@ -304,8 +331,12 @@ class Central(SimpleHTTPRequestHandler):
             return self._json({"erro": "token inválido"}, HTTPStatus.FORBIDDEN)
 
         if self.path == "/api/estado":
-            return self._json({"versao": VERSAO, "sistema": info_sistema(),
-                               "ferramentas": info_ferramentas(), "docker": docker_ok()})
+            with ThreadPoolExecutor(max_workers=2) as pool:
+                ferr = pool.submit(info_ferramentas)
+                dock = pool.submit(docker_ok)
+                return self._json({"versao": VERSAO, "sistema": info_sistema(),
+                                   "ferramentas": ferr.result(), "docker": dock.result(),
+                                   "minimo_cluster_gb": MINIMO_CLUSTER_GB})
         if self.path == "/api/cluster":
             return self._json(info_cluster())
         if self.path == "/api/labs":

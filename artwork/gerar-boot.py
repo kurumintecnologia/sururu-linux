@@ -88,6 +88,28 @@ def splash(w, h):
 '''
 
 
+def splash_isolinux():
+    """Menu do isolinux (BIOS) em 1024x768. O menu do syslinux usa uma grade de
+    8x16 pixels: 128 colunas e 48 linhas. A marca ocupa as linhas 1 a 18, o menu
+    começa na linha 21 e a ajuda fica na linha 43 (ver scripts/tema-boot.sh)."""
+    w, h = 1024, 768
+    cx = w / 2
+    tam = 112
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">
+<defs>{DEFS}</defs>
+<rect width="{w}" height="{h}" fill="url(#fundo)"/>
+{trama(w, h, 28, 0.07)}
+<ellipse cx="{cx}" cy="{36 + tam / 2}" rx="{tam * 1.9}" ry="{tam * 1.4}" fill="url(#halo)"/>
+<g transform="translate({cx - tam / 2} 36) scale({tam / 128})">{CONCHA}</g>
+<text x="{cx}" y="222" text-anchor="middle" font-family="{FONTE}" font-size="62" letter-spacing="-1.5" fill="#E7F1EF"><tspan font-weight="600">sururu</tspan><tspan font-weight="300" fill="#7CC4A8"> linux</tspan></text>
+<text x="{cx}" y="258" text-anchor="middle" font-family="{FONTE}" font-size="19" fill="#A9C9D0" letter-spacing="3">2027  ISAAC</text>
+<rect x="208" y="322" width="608" height="180" rx="10" fill="#0B2A2E" opacity="0.55"/>
+{lagoa(w, h, h * 0.93)}
+<text x="{cx}" y="{h - 22}" text-anchor="middle" font-family="{FONTE}" font-size="17" fill="#A9C9D0" opacity="0.85">Linux, containers e Kubernetes sem bicho de sete cabeças</text>
+</svg>
+'''
+
+
 def plymouth_logo():
     """Concha com halo, para o centro da tela de carregamento (fundo transparente)."""
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360">
@@ -117,6 +139,7 @@ if __name__ == "__main__":
     arquivos = {
         "splash-16x9.svg": splash(1920, 1080),
         "splash-4x3.svg": splash(640, 480),
+        "splash-isolinux.svg": splash_isolinux(),
         "plymouth-logo.svg": plymouth_logo(),
         "plymouth-nome.svg": plymouth_nome(),
     }

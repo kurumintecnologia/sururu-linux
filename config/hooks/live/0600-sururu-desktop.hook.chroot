@@ -3,7 +3,7 @@
 set -e
 
 # Papel de parede padrão do Debian aponta para o do Sururu
-WP=/usr/share/sururu/wallpaper/sururu-lagoa-dia.svg
+WP=/usr/share/sururu/wallpaper/sururu-lagoa-dia.png
 if [ -f "$WP" ]; then
   update-alternatives --install /usr/share/images/desktop-base/desktop-background \
     desktop-background "$WP" 90

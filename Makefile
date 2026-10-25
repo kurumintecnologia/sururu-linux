@@ -3,7 +3,7 @@
 
 INC := config/includes.chroot
 
-.PHONY: deps prepare config build test clean checksum arte pngs docs central
+.PHONY: deps prepare config build test clean checksum arte pngs docs site central
 
 deps:
 	sudo apt install -y live-build qemu-system-x86 xorriso python3
@@ -23,8 +23,9 @@ prepare: arte
 	  $(INC)/usr/bin $(INC)/usr/share/applications $(INC)/etc/xdg/autostart \
 	  $(INC)/etc/xdg/xfce4/xfconf/xfce-perchannel-xml $(INC)/etc/xdg/xfce4/panel \
 	  $(INC)/etc/lightdm/lightdm-gtk-greeter.conf.d \
-	  $(INC)/usr/share/plymouth/themes/sururu $(INC)/usr/share/sururu/boot $(INC)/etc/default/grub.d
-	cp artwork/wallpaper/*.svg $(INC)/usr/share/sururu/wallpaper/
+	  $(INC)/usr/share/plymouth/themes/sururu $(INC)/usr/share/sururu/boot $(INC)/etc/default/grub.d \
+	  $(INC)/usr/share/sururu/calamares $(INC)/etc/skel
+	cp artwork/wallpaper/*.png artwork/wallpaper/*.svg $(INC)/usr/share/sururu/wallpaper/
 	cp artwork/sururu-simbolo.svg $(INC)/usr/share/icons/hicolor/scalable/apps/sururu.svg
 	cp artwork/sururu-simbolo.svg $(INC)/usr/share/pixmaps/sururu.svg
 	rm -rf $(INC)/usr/share/sururu/central && cp -r central $(INC)/usr/share/sururu/central
@@ -39,6 +40,9 @@ prepare: arte
 	cp artwork/boot/plymouth-*.png $(INC)/usr/share/plymouth/themes/sururu/
 	cp artwork/boot/splash-*.png $(INC)/usr/share/sururu/boot/
 	cp packaging/grub/sururu.cfg $(INC)/etc/default/grub.d/
+	cp packaging/calamares/show.qml $(INC)/usr/share/sururu/calamares/
+	cp artwork/boot/plymouth-logo.png $(INC)/usr/share/sururu/boot/sururu-avatar.png
+	cp artwork/boot/plymouth-logo.png $(INC)/etc/skel/.face
 	./scripts/tema-boot.sh
 
 config:
@@ -57,6 +61,11 @@ central:
 
 docs:
 	pip install --break-system-packages -q mkdocs-material && mkdocs serve
+
+# Monta o site completo (página + documentação) em ./publico, igual ao GitHub
+site:
+	rm -rf publico && mkdir -p publico && cp -r pagina/* publico/ && mkdocs build -d publico/docs
+	@echo "Abra publico/index.html no navegador"
 
 checksum:
 	sha256sum sururu-isaac-*.hybrid.iso > SHA256SUMS
