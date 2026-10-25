@@ -1,0 +1,30 @@
+# gerado pelo live-build
+.build/
+cache/
+chroot/
+binary/
+chroot.files
+chroot.packages.*
+binary.*
+build.log
+*.iso
+*.contents
+*.files
+*.packages
+*.zsync
+SHA256SUMS*
+config/binary
+config/bootstrap
+config/chroot
+config/common
+config/source
+# copiado pelo make prepare
+config/includes.chroot/usr/
+config/includes.chroot/etc/xdg/
+config/includes.chroot/etc/lightdm/
+# docs
+site/
+__pycache__/
+# gerado pelo scripts/tema-boot.sh a partir do live-build
+config/bootloaders/
+config/includes.chroot/etc/default/

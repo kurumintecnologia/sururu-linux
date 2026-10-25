@@ -1,0 +1,94 @@
+# Tela de carregamento do Sururu Linux
+# A concha surge devagar e cinco nós acendem em sequência, como pods subindo.
+
+Window.SetBackgroundTopColor(0.078, 0.071, 0.165);     # #14122A
+Window.SetBackgroundBottomColor(0.047, 0.227, 0.243);  # #0C3A3E
+
+W = Window.GetWidth();
+H = Window.GetHeight();
+escala = 1;
+if (H < 800) escala = 0.7;
+
+# ---- concha
+logo_img = Image("plymouth-logo.png");
+logo_img = logo_img.Scale(logo_img.GetWidth() * escala, logo_img.GetHeight() * escala);
+logo = Sprite(logo_img);
+logo.SetX(W / 2 - logo_img.GetWidth() / 2);
+logo.SetY(H * 0.40 - logo_img.GetHeight() / 2);
+logo.SetOpacity(0);
+
+# ---- nome
+nome_img = Image("plymouth-nome.png");
+nome_img = nome_img.Scale(nome_img.GetWidth() * escala * 0.8, nome_img.GetHeight() * escala * 0.8);
+nome = Sprite(nome_img);
+nome.SetX(W / 2 - nome_img.GetWidth() / 2);
+nome.SetY(logo.GetY() + logo_img.GetHeight() - 30 * escala);
+nome.SetOpacity(0);
+
+# ---- nós do cluster
+no_img = Image("plymouth-no.png");
+ativo_img = Image("plymouth-no-ativo.png");
+TOTAL = 5;
+espaco = 34 * escala;
+base_x = W / 2 - (TOTAL - 1) * espaco / 2 - no_img.GetWidth() / 2;
+base_y = nome.GetY() + nome_img.GetHeight() + 40 * escala;
+for (i = 0; i < TOTAL; i++) {
+  nos[i] = Sprite(no_img);
+  nos[i].SetX(base_x + i * espaco);
+  nos[i].SetY(base_y);
+  nos[i].SetOpacity(0);
+  acesos[i] = Sprite(ativo_img);
+  acesos[i].SetX(base_x + i * espaco);
+  acesos[i].SetY(base_y);
+  acesos[i].SetOpacity(0);
+}
+
+quadro = 0;
+fun ao_atualizar() {
+  quadro++;
+  entrada = Math.Min(1, quadro / 40);
+  logo.SetOpacity(entrada);
+  nome.SetOpacity(Math.Min(1, Math.Max(0, (quadro - 15) / 40)));
+  vez = Math.Int(quadro / 9) % (TOTAL + 2);
+  for (i = 0; i < TOTAL; i++) {
+    nos[i].SetOpacity(entrada * 0.55);
+    if (i < vez) acesos[i].SetOpacity(entrada);
+    else acesos[i].SetOpacity(0);
+  }
+}
+Plymouth.SetRefreshFunction(ao_atualizar);
+
+# ---- senha do disco criptografado
+pergunta = Sprite();
+bolinhas = Sprite();
+fun pedir_senha(texto, quantos) {
+  t = Image.Text("Digite a senha do disco para continuar", 0.91, 0.95, 0.94, 1, "Sans 14");
+  pergunta.SetImage(t);
+  pergunta.SetOpacity(1);
+  bolinhas.SetOpacity(1);
+  pergunta.SetX(W / 2 - t.GetWidth() / 2);
+  pergunta.SetY(base_y + 60 * escala);
+  pontos = "";
+  for (i = 0; i < quantos; i++) pontos = pontos + "● ";
+  b = Image.Text(pontos, 0.95, 0.69, 0.20, 1, "Sans 16");
+  bolinhas.SetImage(b);
+  bolinhas.SetX(W / 2 - b.GetWidth() / 2);
+  bolinhas.SetY(base_y + 95 * escala);
+}
+Plymouth.SetDisplayPasswordFunction(pedir_senha);
+
+fun voltar_ao_normal() {
+  pergunta.SetOpacity(0);
+  bolinhas.SetOpacity(0);
+}
+Plymouth.SetDisplayNormalFunction(voltar_ao_normal);
+
+# ---- mensagens do sistema (ex.: verificando disco)
+aviso = Sprite();
+fun mostrar_mensagem(texto) {
+  m = Image.Text(texto, 0.66, 0.79, 0.82, 1, "Sans 11");
+  aviso.SetImage(m);
+  aviso.SetX(W / 2 - m.GetWidth() / 2);
+  aviso.SetY(H * 0.92);
+}
+Plymouth.SetMessageFunction(mostrar_mensagem);

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Boas-vindas do Sururu
+Comment=Abre a Central Sururu no primeiro login
+Exec=sururu-boasvindas
+Icon=sururu
+Terminal=false
+NoDisplay=true
+OnlyShowIn=XFCE;
+X-XFCE-Autostart-Override=true

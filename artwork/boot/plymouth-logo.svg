@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="360" height="360">
+<defs>
+<linearGradient id="casca" x1="0.15" y1="0.9" x2="0.85" y2="0.1">
+  <stop offset="0" stop-color="#3A3463"/><stop offset="0.55" stop-color="#1F5A66"/><stop offset="1" stop-color="#3B9A7C"/>
+</linearGradient>
+<linearGradient id="nacar" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#E7F1EF"/><stop offset="1" stop-color="#A9C9D0"/>
+</linearGradient>
+<linearGradient id="fundo" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#14122A"/><stop offset="0.55" stop-color="#0F2B36"/><stop offset="1" stop-color="#0C3A3E"/>
+</linearGradient>
+<radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#2F7A63" stop-opacity="0.45"/><stop offset="1" stop-color="#2F7A63" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<ellipse cx="180" cy="180" rx="175" ry="150" fill="url(#halo)"/>
+<g transform="translate(80 80) scale(1.5625)">
+<g>
+  <path d="M24 106 C14 86 20 52 44 30 C62 14 88 10 104 20 C118 30 116 52 102 70 C86 92 58 108 34 110 C29 110 26 109 24 106 Z" fill="url(#casca)"/>
+  <path d="M46 34 C62 20 86 16 100 25 C110 32 110 47 100 61" fill="none" stroke="url(#nacar)" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <path d="M30 100 C44 80 62 60 92 40" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M34 104 C54 94 74 80 98 58" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <circle cx="92" cy="40" r="5" fill="#E7F1EF"/>
+  <circle cx="98" cy="58" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="62" cy="66" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="29" cy="103" r="7" fill="#F2B134"/>
+</g></g>
+</svg>

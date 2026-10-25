@@ -1,0 +1,57 @@
+site_name: Sururu Linux
+site_description: Linux, containers e Kubernetes sem bicho de sete cabeças
+site_url: https://kurumintecnologia.github.io/sururu-linux/
+repo_url: https://github.com/kurumintecnologia/sururu-linux
+repo_name: kurumintecnologia/sururu-linux
+edit_uri: edit/main/docs/
+copyright: Sururu Linux é software livre (GPL-3.0). Feito em Alagoas pela comunidade, com a Kurumin Tecnologia.
+
+theme:
+  name: material
+  language: pt-BR
+  logo: img/sururu-simbolo.svg
+  favicon: img/sururu-simbolo.svg
+  font:
+    text: IBM Plex Sans
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle: { icon: material/weather-night, name: Modo escuro }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle: { icon: material/weather-sunny, name: Modo claro }
+  features:
+    - navigation.instant
+    - navigation.sections
+    - content.code.copy
+    - search.suggest
+
+extra_css:
+  - css/sururu.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed: { alternate_style: true }
+  - attr_list
+  - toc: { permalink: true }
+
+nav:
+  - Início: index.md
+  - Primeiros passos:
+      - Baixar e gravar no pendrive: comecar.md
+      - Seu primeiro cluster: primeiro-cluster.md
+  - Laboratórios:
+      - Como funcionam: laboratorios.md
+      - Escrever um laboratório: novo-laboratorio.md
+  - Atualizações e versões: atualizacoes.md
+  - Comunidade:
+      - Como contribuir: contribuir.md
+      - Apoie o projeto: apoiar.md
+  - Perguntas frequentes: faq.md

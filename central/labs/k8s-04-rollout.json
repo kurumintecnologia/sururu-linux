@@ -1,0 +1,47 @@
+{
+  "id": "k8s-04-rollout",
+  "trilha": "kubernetes",
+  "ordem": 4,
+  "titulo": "Atualizar sem derrubar",
+  "nivel": "intermediário",
+  "tempo": 15,
+  "precisa": [
+    "cluster"
+  ],
+  "prova": true,
+  "resumo": "Trocar a versão da aplicação com rolling update, como cai na CKA.",
+  "historia": "Saiu versão nova do site da loja. Dá pra atualizar com cliente comprando, sem tirar do ar.",
+  "passos": [
+    {
+      "texto": "Atualize a imagem do Deployment loja para nginx:1.27.",
+      "comando": "kubectl set image deployment/loja nginx=nginx:1.27"
+    },
+    {
+      "texto": "Acompanhe a troca, pod por pod.",
+      "comando": "kubectl rollout status deployment/loja"
+    },
+    {
+      "texto": "Veja o histórico de versões.",
+      "comando": "kubectl rollout history deployment/loja"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "A loja usa a imagem nginx:1.27",
+      "comando": "[ \"$(kubectl get deployment loja -o jsonpath='{.spec.template.spec.containers[0].image}')\" = nginx:1.27 ]",
+      "dica": "O nome do container no Deployment criado pelo kubectl create é nginx."
+    },
+    {
+      "texto": "Todas as réplicas estão na versão nova",
+      "comando": "kubectl rollout status deployment/loja --timeout=5s",
+      "dica": "Espere o rollout terminar ou veja os pods com kubectl get pods."
+    }
+  ],
+  "solucao": [
+    "kubectl set image deployment/loja nginx=nginx:1.27",
+    "kubectl rollout status deployment/loja"
+  ],
+  "limpeza": [
+    "kubectl set image deployment/loja nginx=nginx 2>/dev/null || true"
+  ]
+}

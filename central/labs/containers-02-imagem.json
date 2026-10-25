@@ -1,0 +1,60 @@
+{
+  "id": "containers-02-imagem",
+  "trilha": "containers",
+  "ordem": 2,
+  "titulo": "Sua própria imagem",
+  "nivel": "intermediário",
+  "tempo": 15,
+  "precisa": [
+    "docker"
+  ],
+  "prova": false,
+  "resumo": "Escrever um Dockerfile e construir uma imagem com a página da pousada.",
+  "historia": "Agora a pousada quer a página dela, não a do nginx.",
+  "passos": [
+    {
+      "texto": "Crie uma pasta para o projeto.",
+      "comando": "mkdir -p ~/pousada && cd ~/pousada"
+    },
+    {
+      "texto": "Escreva a página.",
+      "comando": "echo '<h1>Pousada Maragogi</h1>' > index.html"
+    },
+    {
+      "texto": "Crie o Dockerfile com estas duas linhas.",
+      "comando": "FROM nginx:alpine\nCOPY index.html /usr/share/nginx/html/index.html"
+    },
+    {
+      "texto": "Construa a imagem com o nome pousada:1.0.",
+      "comando": "docker build -t pousada:1.0 ."
+    },
+    {
+      "texto": "Rode a sua imagem na porta 8081.",
+      "comando": "docker run -d --name pousada-v1 -p 8081:80 pousada:1.0"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "A imagem pousada:1.0 existe",
+      "comando": "docker image inspect pousada:1.0 >/dev/null 2>&1",
+      "dica": "docker build -t pousada:1.0 . (o ponto no final é a pasta atual)."
+    },
+    {
+      "texto": "A página da pousada responde na porta 8081",
+      "comando": "curl -fs http://localhost:8081 | grep -q 'Pousada Maragogi'",
+      "dica": "Confira o -p 8081:80 e se o index.html foi copiado no Dockerfile."
+    }
+  ],
+  "solucao": [
+    "mkdir -p ~/pousada",
+    "echo '<h1>Pousada Maragogi</h1>' > ~/pousada/index.html",
+    "printf 'FROM nginx:alpine\\nCOPY index.html /usr/share/nginx/html/index.html\\n' > ~/pousada/Dockerfile",
+    "docker build -t pousada:1.0 ~/pousada",
+    "docker run -d --name pousada-v1 -p 8081:80 pousada:1.0"
+  ],
+  "limpeza": [
+    "docker rm -f pousada-v1",
+    "docker rmi pousada:1.0",
+    "rm -rf ~/pousada"
+  ]
+}

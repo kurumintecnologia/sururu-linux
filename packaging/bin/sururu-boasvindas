@@ -1,0 +1,8 @@
+#!/bin/sh
+# Abre a Central Sururu só no primeiro login de cada usuário.
+MARCA="${XDG_CONFIG_HOME:-$HOME/.config}/sururu/boasvindas-vista"
+[ -f "$MARCA" ] && exit 0
+mkdir -p "$(dirname "$MARCA")"
+touch "$MARCA"
+sleep 4
+exec sururu-central

@@ -1,0 +1,8 @@
+#!/bin/sh
+# Tela de carregamento (Plymouth) com o tema Sururu
+set -e
+if command -v plymouth-set-default-theme >/dev/null 2>&1 \
+   && [ -f /usr/share/plymouth/themes/sururu/sururu.plymouth ]; then
+  plymouth-set-default-theme sururu
+  update-initramfs -u -k all
+fi

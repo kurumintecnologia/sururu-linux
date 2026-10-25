@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Sururu
+Description=Tela de carregamento do Sururu Linux: a concha na lagoa à noite
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/sururu
+ScriptFile=/usr/share/plymouth/themes/sururu/sururu.script

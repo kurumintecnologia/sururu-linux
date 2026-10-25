@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Central Sururu</title>
+  <link rel="icon" href="simbolo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <nav class="trilho" aria-label="Seções da Central">
+      <div class="marca">
+        <img src="simbolo.svg" alt="" width="40" height="40">
+        <div>
+          <strong>Central Sururu</strong>
+          <span id="versao">Sururu Linux</span>
+        </div>
+      </div>
+      <a href="#inicio" data-pag="inicio">Início</a>
+      <a href="#cluster" data-pag="cluster">Meu cluster</a>
+      <a href="#labs" data-pag="labs">Laboratórios</a>
+      <a href="#prova" data-pag="prova">Modo prova</a>
+      <a href="#ajuda" data-pag="ajuda">Ajuda</a>
+      <div class="trilho-rodape">
+        <span class="trama" aria-hidden="true"></span>
+        <p>Feito em Alagoas pela comunidade, com a Kurumin Tecnologia.</p>
+      </div>
+    </nav>
+
+    <main id="conteudo" tabindex="-1">
+      <!-- INÍCIO -->
+      <section data-secao="inicio">
+        <header class="saudacao">
+          <h1 id="ola">Bom dia!</h1>
+          <p>Linux, containers e Kubernetes sem bicho de sete cabeças. Escolha por onde começar.</p>
+        </header>
+
+        <ol class="caminho" id="caminho" aria-label="Trilhas de estudo"></ol>
+
+        <div class="duas-colunas">
+          <section class="bloco">
+            <h2>Sua máquina</h2>
+            <dl class="medidas" id="medidas"></dl>
+            <p class="aviso" id="aviso-live" hidden>
+              Você está no modo live: o que fizer aqui some ao desligar. Para guardar seu progresso,
+              instale o Sururu no disco pelo ícone "Instalar" na área de trabalho.
+            </p>
+          </section>
+          <section class="bloco">
+            <h2>Ferramentas instaladas</h2>
+            <ul class="ferramentas" id="ferramentas"></ul>
+          </section>
+        </div>
+      </section>
+
+      <!-- CLUSTER -->
+      <section data-secao="cluster" hidden>
+        <header class="titulo-secao">
+          <h1>Meu cluster</h1>
+          <p>Um cluster Kubernetes de verdade, rodando dentro de containers na sua máquina. Pode quebrar à vontade: é só apagar e criar de novo.</p>
+        </header>
+
+        <div id="docker-alerta" class="alerta" hidden></div>
+
+        <div class="cluster-palco" id="cluster-palco"></div>
+
+        <div class="acoes" id="cluster-acoes">
+          <fieldset class="segmentado" id="tamanho">
+            <legend>Tamanho</legend>
+            <label><input type="radio" name="workers" value="0"> Só o control-plane</label>
+            <label><input type="radio" name="workers" value="1" checked> 1 worker</label>
+            <label><input type="radio" name="workers" value="2"> 2 workers</label>
+          </fieldset>
+          <button class="botao principal" id="criar">Criar meu cluster</button>
+          <button class="botao perigo" id="apagar" hidden>Apagar cluster</button>
+        </div>
+
+        <pre class="terminal" id="job-log" hidden></pre>
+
+        <section class="bloco" id="pods-bloco" hidden>
+          <h2>O que está rodando</h2>
+          <table class="tabela">
+            <thead><tr><th>Namespace</th><th>Pod</th><th>Situação</th></tr></thead>
+            <tbody id="pods"></tbody>
+          </table>
+        </section>
+      </section>
+
+      <!-- LABS -->
+      <section data-secao="labs" hidden>
+        <header class="titulo-secao">
+          <h1>Laboratórios</h1>
+          <p>Exercícios curtos com correção automática. Faça no terminal e clique em "Verificar" quando terminar.</p>
+        </header>
+        <div class="abas" role="tablist" id="abas-trilha">
+          <button role="tab" data-trilha="" aria-selected="true">Todos</button>
+          <button role="tab" data-trilha="linux">Linux</button>
+          <button role="tab" data-trilha="containers">Containers</button>
+          <button role="tab" data-trilha="kubernetes">Kubernetes</button>
+        </div>
+        <ul class="lista-labs" id="lista-labs"></ul>
+      </section>
+
+      <!-- LAB ABERTO -->
+      <section data-secao="lab" hidden>
+        <a href="#labs" class="voltar">Voltar aos laboratórios</a>
+        <article class="lab" id="lab"></article>
+      </section>
+
+      <!-- PROVA -->
+      <section data-secao="prova" hidden>
+        <header class="titulo-secao">
+          <h1>Modo prova</h1>
+          <p>Treine como na CKA: quatro tarefas, 30 minutos, sem os comandos prontos. Pode consultar a documentação oficial em kubernetes.io/docs, como na prova de verdade.</p>
+        </header>
+        <div id="prova"></div>
+      </section>
+
+      <!-- AJUDA -->
+      <section data-secao="ajuda" hidden>
+        <header class="titulo-secao">
+          <h1>Ajuda</h1>
+          <p>Travou? Respira. Todo mundo que hoje mexe com cluster já errou um YAML por causa de um espaço.</p>
+        </header>
+        <div class="duas-colunas">
+          <section class="bloco">
+            <h2>Atalhos que salvam</h2>
+            <dl class="atalhos">
+              <dt><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd></dt><dd>Abre o terminal</dd>
+              <dt><kbd>Tab</kbd></dt><dd>Completa comandos e nomes de arquivos</dd>
+              <dt><kbd>Ctrl</kbd> + <kbd>C</kbd></dt><dd>Para o comando que está rodando</dd>
+              <dt><kbd>Ctrl</kbd> + <kbd>R</kbd></dt><dd>Procura um comando que você já usou</dd>
+              <dt><code>k9s</code></dt><dd>Painel do cluster dentro do terminal</dd>
+            </dl>
+          </section>
+          <section class="bloco">
+            <h2>Onde aprender mais</h2>
+            <ul class="links">
+              <li><a href="https://kurumintecnologia.com.br/" target="_blank" rel="noopener">Escola Kurumin</a><span>Trilhas em vídeo de Linux, containers e Kubernetes</span></li>
+              <li><a href="https://kubernetes.io/pt-br/docs/home/" target="_blank" rel="noopener">Documentação do Kubernetes</a><span>Em português, a mesma liberada na prova</span></li>
+              <li><a href="https://github.com/kurumintecnologia/sururu-linux/issues" target="_blank" rel="noopener">Relatar um problema</a><span>Achou um erro? Conte pra gente no GitHub</span></li>
+            </ul>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="aviso-flutuante" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "id": "k8s-03-configmap",
+  "trilha": "kubernetes",
+  "ordem": 3,
+  "titulo": "Namespace e ConfigMap",
+  "nivel": "intermediário",
+  "tempo": 15,
+  "precisa": [
+    "cluster"
+  ],
+  "prova": true,
+  "resumo": "Separar ambientes e guardar configuração fora da imagem.",
+  "historia": "A Dona Cida abriu uma filial. Cada loja tem sua configuração, no seu próprio espaço.",
+  "passos": [
+    {
+      "texto": "Crie o namespace filial.",
+      "comando": "kubectl create namespace filial"
+    },
+    {
+      "texto": "Crie o ConfigMap config-loja com a cidade da filial.",
+      "comando": "kubectl create configmap config-loja -n filial --from-literal=cidade=palmeira-dos-indios"
+    },
+    {
+      "texto": "Leia o valor guardado.",
+      "comando": "kubectl get configmap config-loja -n filial -o yaml"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "O namespace filial existe",
+      "comando": "kubectl get namespace filial",
+      "dica": "kubectl create namespace filial"
+    },
+    {
+      "texto": "O ConfigMap guarda cidade=palmeira-dos-indios",
+      "comando": "[ \"$(kubectl get configmap config-loja -n filial -o jsonpath='{.data.cidade}')\" = palmeira-dos-indios ]",
+      "dica": "Não esqueça o -n filial e o --from-literal=cidade=palmeira-dos-indios."
+    }
+  ],
+  "solucao": [
+    "kubectl create namespace filial",
+    "kubectl create configmap config-loja -n filial --from-literal=cidade=palmeira-dos-indios"
+  ],
+  "limpeza": [
+    "kubectl delete namespace filial --ignore-not-found"
+  ]
+}

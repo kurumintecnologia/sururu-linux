@@ -1,6 +1,16 @@
-# Desktop leve (XFCE) — troque por kde-plasma-desktop se quiser algo mais pesado
+# Desktop leve (XFCE) com a cara do Sururu
 task-xfce-desktop
 lightdm
+lightdm-gtk-greeter
+xfce4-whiskermenu-plugin
+xfce4-terminal
+mousepad
 firefox-esr
+firefox-esr-l10n-pt-br
 network-manager-gnome
+papirus-icon-theme
+greybird-gtk-theme
+fonts-ibm-plex
+fonts-jetbrains-mono
 fonts-noto
+librsvg2-common

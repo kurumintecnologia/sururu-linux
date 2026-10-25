@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" width="520" height="128">
+  <title>Sururu Linux</title>
+  <defs>
+    <linearGradient id="casca" x1="0.15" y1="0.9" x2="0.85" y2="0.1">
+      <stop offset="0" stop-color="#2B2747"/>
+      <stop offset="0.55" stop-color="#1D4C57"/>
+      <stop offset="1" stop-color="#2F7A63"/>
+    </linearGradient>
+    <linearGradient id="nacar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D9ECEC"/>
+      <stop offset="1" stop-color="#A9C9D0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M24 106 C14 86 20 52 44 30 C62 14 88 10 104 20 C118 30 116 52 102 70 C86 92 58 108 34 110 C29 110 26 109 24 106 Z" fill="url(#casca)"/>
+    <path d="M46 34 C62 20 86 16 100 25 C110 32 110 47 100 61" fill="none" stroke="url(#nacar)" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+    <path d="M30 100 C44 80 62 60 92 40" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+    <path d="M34 104 C54 94 74 80 98 58" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+    <circle cx="92" cy="40" r="5" fill="#E7F1EF"/>
+    <circle cx="98" cy="58" r="4" fill="#E7F1EF" opacity="0.8"/>
+    <circle cx="62" cy="66" r="4" fill="#E7F1EF" opacity="0.8"/>
+    <circle cx="29" cy="103" r="7" fill="#F2B134"/>
+  </g>
+  <text x="140" y="86" font-family="'IBM Plex Sans','Inter',sans-serif" font-weight="600" font-size="68" letter-spacing="-2" fill="#0F3B40">sururu</text>
+  <text x="360" y="86" font-family="'IBM Plex Sans','Inter',sans-serif" font-weight="300" font-size="68" letter-spacing="-1" fill="#2F7A63">linux</text>
+</svg>

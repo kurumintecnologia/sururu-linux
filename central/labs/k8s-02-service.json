@@ -1,0 +1,46 @@
+{
+  "id": "k8s-02-service",
+  "trilha": "kubernetes",
+  "ordem": 2,
+  "titulo": "Expor com um Service",
+  "nivel": "iniciante",
+  "tempo": 10,
+  "precisa": [
+    "cluster"
+  ],
+  "prova": true,
+  "resumo": "Dar um endereço fixo para os pods da loja.",
+  "historia": "Os pods da Dona Cida mudam de IP o tempo todo. O Service é o endereço que nunca muda.",
+  "passos": [
+    {
+      "texto": "Exponha o Deployment loja na porta 80 como NodePort.",
+      "comando": "kubectl expose deployment loja --port=80 --type=NodePort"
+    },
+    {
+      "texto": "Veja o Service e a porta que ele ganhou.",
+      "comando": "kubectl get service loja"
+    },
+    {
+      "texto": "Confira que ele encontrou os pods.",
+      "comando": "kubectl get endpoints loja"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "O Service loja é do tipo NodePort",
+      "comando": "[ \"$(kubectl get service loja -o jsonpath='{.spec.type}')\" = NodePort ]",
+      "dica": "Use --type=NodePort no kubectl expose."
+    },
+    {
+      "texto": "O Service aponta para os pods da loja",
+      "comando": "[ -n \"$(kubectl get endpoints loja -o jsonpath='{.subsets[*].addresses[*].ip}')\" ]",
+      "dica": "O Deployment loja precisa existir (faça o lab anterior)."
+    }
+  ],
+  "solucao": [
+    "kubectl expose deployment loja --port=80 --type=NodePort"
+  ],
+  "limpeza": [
+    "kubectl delete service loja --ignore-not-found"
+  ]
+}

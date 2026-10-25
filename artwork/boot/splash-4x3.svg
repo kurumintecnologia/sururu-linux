@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+<defs>
+<linearGradient id="casca" x1="0.15" y1="0.9" x2="0.85" y2="0.1">
+  <stop offset="0" stop-color="#3A3463"/><stop offset="0.55" stop-color="#1F5A66"/><stop offset="1" stop-color="#3B9A7C"/>
+</linearGradient>
+<linearGradient id="nacar" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#E7F1EF"/><stop offset="1" stop-color="#A9C9D0"/>
+</linearGradient>
+<linearGradient id="fundo" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#14122A"/><stop offset="0.55" stop-color="#0F2B36"/><stop offset="1" stop-color="#0C3A3E"/>
+</linearGradient>
+<radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+  <stop offset="0" stop-color="#2F7A63" stop-opacity="0.45"/><stop offset="1" stop-color="#2F7A63" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="640" height="480" fill="url(#fundo)"/>
+<path d="M-520 0 L-40 480 M-40 0 L-520 480 M-500 0 L-20 480 M-20 0 L-500 480 M-480 0 L0 480 M0 0 L-480 480 M-460 0 L20 480 M20 0 L-460 480 M-440 0 L40 480 M40 0 L-440 480 M-420 0 L60 480 M60 0 L-420 480 M-400 0 L80 480 M80 0 L-400 480 M-380 0 L100 480 M100 0 L-380 480 M-360 0 L120 480 M120 0 L-360 480 M-340 0 L140 480 M140 0 L-340 480 M-320 0 L160 480 M160 0 L-320 480 M-300 0 L180 480 M180 0 L-300 480 M-280 0 L200 480 M200 0 L-280 480 M-260 0 L220 480 M220 0 L-260 480 M-240 0 L240 480 M240 0 L-240 480 M-220 0 L260 480 M260 0 L-220 480 M-200 0 L280 480 M280 0 L-200 480 M-180 0 L300 480 M300 0 L-180 480 M-160 0 L320 480 M320 0 L-160 480 M-140 0 L340 480 M340 0 L-140 480 M-120 0 L360 480 M360 0 L-120 480 M-100 0 L380 480 M380 0 L-100 480 M-80 0 L400 480 M400 0 L-80 480 M-60 0 L420 480 M420 0 L-60 480 M-40 0 L440 480 M440 0 L-40 480 M-20 0 L460 480 M460 0 L-20 480 M0 0 L480 480 M480 0 L0 480 M20 0 L500 480 M500 0 L20 480 M40 0 L520 480 M520 0 L40 480 M60 0 L540 480 M540 0 L60 480 M80 0 L560 480 M560 0 L80 480 M100 0 L580 480 M580 0 L100 480 M120 0 L600 480 M600 0 L120 480 M140 0 L620 480 M620 0 L140 480 M160 0 L640 480 M640 0 L160 480 M180 0 L660 480 M660 0 L180 480 M200 0 L680 480 M680 0 L200 480 M220 0 L700 480 M700 0 L220 480 M240 0 L720 480 M720 0 L240 480 M260 0 L740 480 M740 0 L260 480 M280 0 L760 480 M760 0 L280 480 M300 0 L780 480 M780 0 L300 480 M320 0 L800 480 M800 0 L320 480 M340 0 L820 480 M820 0 L340 480 M360 0 L840 480 M840 0 L360 480 M380 0 L860 480 M860 0 L380 480 M400 0 L880 480 M880 0 L400 480 M420 0 L900 480 M900 0 L420 480 M440 0 L920 480 M920 0 L440 480 M460 0 L940 480 M940 0 L460 480 M480 0 L960 480 M960 0 L480 480 M500 0 L980 480 M980 0 L500 480 M520 0 L1000 480 M1000 0 L520 480 M540 0 L1020 480 M1020 0 L540 480 M560 0 L1040 480 M1040 0 L560 480 M580 0 L1060 480 M1060 0 L580 480 M600 0 L1080 480 M1080 0 L600 480 M620 0 L1100 480 M1100 0 L620 480 M640 0 L1120 480 M1120 0 L640 480 M660 0 L1140 480 M1140 0 L660 480 M680 0 L1160 480 M1160 0 L680 480" stroke="#A9C9D0" stroke-width="1" fill="none" opacity="0.07"/>
+<ellipse cx="320.0" cy="100.53333333333333" rx="126.66666666666664" ry="99.99999999999999" fill="url(#halo)"/>
+<g transform="translate(286.6666666666667 67.2) scale(0.5208333333333333)">
+<g>
+  <path d="M24 106 C14 86 20 52 44 30 C62 14 88 10 104 20 C118 30 116 52 102 70 C86 92 58 108 34 110 C29 110 26 109 24 106 Z" fill="url(#casca)"/>
+  <path d="M46 34 C62 20 86 16 100 25 C110 32 110 47 100 61" fill="none" stroke="url(#nacar)" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  <path d="M30 100 C44 80 62 60 92 40" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+  <path d="M34 104 C54 94 74 80 98 58" fill="none" stroke="#A9C9D0" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <circle cx="92" cy="40" r="5" fill="#E7F1EF"/>
+  <circle cx="98" cy="58" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="62" cy="66" r="4" fill="#E7F1EF" opacity="0.85"/>
+  <circle cx="29" cy="103" r="7" fill="#F2B134"/>
+</g></g>
+<text x="320.0" y="174.75555555555556" text-anchor="middle" font-family="IBM Plex Sans, Inter Display, Inter, DejaVu Sans, sans-serif" font-size="38.22222222222222" letter-spacing="-0.8888888888888888" fill="#E7F1EF"><tspan font-weight="600">sururu</tspan><tspan font-weight="300" fill="#7CC4A8"> linux</tspan></text>
+<text x="320.0" y="196.0888888888889" text-anchor="middle" font-family="IBM Plex Sans, Inter Display, Inter, DejaVu Sans, sans-serif" font-size="11.555555555555555" fill="#A9C9D0" letter-spacing="1.3333333333333333">2027  ISAAC</text>
+<rect y="432.0" width="640" height="48.0" fill="#0B2A2E"/><path d="M0 432.0 Q160.0 423.36 320.0 429.12 Q499.20000000000005 433.92 640 425.28 L640 432.0 Z" fill="#0B2A2E"/><rect x="30" y="470" width="70" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="90" y="474" width="60" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="150" y="470" width="50" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="210" y="474" width="40" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="270" y="470" width="100" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="330" y="474" width="90" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="390" y="470" width="80" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="450" y="474" width="70" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="510" y="470" width="60" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="570" y="474" width="50" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/><rect x="630" y="470" width="40" height="2" rx="1" fill="#A9C9D0" opacity="0.10"/>
+<text x="320.0" y="458.4" text-anchor="middle" font-family="IBM Plex Sans, Inter Display, Inter, DejaVu Sans, sans-serif" font-size="9.777777777777777" fill="#A9C9D0" opacity="0.8">Linux, containers e Kubernetes sem bicho de sete cabeças</text>
+</svg>

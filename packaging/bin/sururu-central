@@ -1,0 +1,3 @@
+#!/bin/sh
+# Abre a Central Sururu. Uso: sururu-central [--pagina labs|cluster|prova]
+exec python3 /usr/share/sururu/central/sururu_central.py "$@"

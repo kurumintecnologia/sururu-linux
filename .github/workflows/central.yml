@@ -1,0 +1,18 @@
+name: Central e laboratórios
+
+on:
+  pull_request:
+    paths: ["central/**"]
+  push:
+    branches: [main]
+    paths: ["central/**"]
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Python compila
+        run: python3 -m py_compile central/sururu_central.py
+      - name: Laboratórios têm os campos obrigatórios
+        run: python3 scripts/validar-labs.py

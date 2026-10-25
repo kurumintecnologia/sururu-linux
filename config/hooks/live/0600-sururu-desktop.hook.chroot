@@ -1,0 +1,23 @@
+#!/bin/sh
+# Ajustes do desktop que precisam rodar dentro do sistema já instalado.
+set -e
+
+# Papel de parede padrão do Debian aponta para o do Sururu
+WP=/usr/share/sururu/wallpaper/sururu-lagoa-dia.svg
+if [ -f "$WP" ]; then
+  update-alternatives --install /usr/share/images/desktop-base/desktop-background \
+    desktop-background "$WP" 90
+  update-alternatives --set desktop-background "$WP"
+fi
+
+# Ícone do Sururu no cache de ícones
+gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+
+# Quem for criado pelo instalador Calamares já entra no grupo docker
+for f in /etc/calamares/modules/users.conf /usr/share/calamares/modules/users.conf; do
+  [ -f "$f" ] || continue
+  grep -q -- "- docker" "$f" || sed -i '/^defaultGroups:/a\    - docker' "$f"
+done
+
+# Docker liga sozinho no boot (o kind precisa dele)
+systemctl enable docker.service 2>/dev/null || true

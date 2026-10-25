@@ -1,0 +1,55 @@
+{
+  "id": "linux-01-terminal",
+  "trilha": "linux",
+  "ordem": 1,
+  "titulo": "Primeiro dia no terminal",
+  "nivel": "iniciante",
+  "tempo": 10,
+  "precisa": [],
+  "prova": false,
+  "resumo": "Criar pastas e arquivos e ajustar permissões, sem medo do terminal.",
+  "historia": "Seu Zé vai abrir uma bodega em Palmeira dos Índios e pediu ajuda para organizar as anotações no computador.",
+  "passos": [
+    {
+      "texto": "Crie a pasta da bodega na sua pasta pessoal.",
+      "comando": "mkdir -p ~/bodega"
+    },
+    {
+      "texto": "Crie o arquivo de anotações com a palavra sururu dentro.",
+      "comando": "echo 'sururu fresco chega na sexta' > ~/bodega/anotacoes.txt"
+    },
+    {
+      "texto": "Deixe o arquivo legível só por você e pelo seu grupo (permissão 640).",
+      "comando": "chmod 640 ~/bodega/anotacoes.txt"
+    },
+    {
+      "texto": "Confira o resultado.",
+      "comando": "ls -l ~/bodega"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "A pasta ~/bodega existe",
+      "comando": "test -d ~/bodega",
+      "dica": "Use mkdir para criar pastas."
+    },
+    {
+      "texto": "O arquivo anotacoes.txt fala de sururu",
+      "comando": "grep -qi sururu ~/bodega/anotacoes.txt",
+      "dica": "O echo com > grava texto num arquivo."
+    },
+    {
+      "texto": "A permissão do arquivo é 640",
+      "comando": "[ \"$(stat -c %a ~/bodega/anotacoes.txt)\" = 640 ]",
+      "dica": "chmod 640 = dono lê e escreve, grupo lê, outros nada."
+    }
+  ],
+  "solucao": [
+    "mkdir -p ~/bodega",
+    "echo 'sururu fresco chega na sexta' > ~/bodega/anotacoes.txt",
+    "chmod 640 ~/bodega/anotacoes.txt"
+  ],
+  "limpeza": [
+    "rm -rf ~/bodega"
+  ]
+}

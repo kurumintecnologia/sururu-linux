@@ -1,0 +1,46 @@
+{
+  "id": "k8s-01-deployment",
+  "trilha": "kubernetes",
+  "ordem": 1,
+  "titulo": "Seu primeiro Deployment",
+  "nivel": "iniciante",
+  "tempo": 10,
+  "precisa": [
+    "cluster"
+  ],
+  "prova": true,
+  "resumo": "Rodar uma aplicação com 3 réplicas e ver o Kubernetes cuidar dela.",
+  "historia": "A loja de sururu da Dona Cida vende pela internet e não pode cair. Três cópias do site resolvem.",
+  "passos": [
+    {
+      "texto": "Crie o Deployment loja com a imagem nginx e 3 réplicas.",
+      "comando": "kubectl create deployment loja --image=nginx --replicas=3"
+    },
+    {
+      "texto": "Acompanhe os pods subindo.",
+      "comando": "kubectl get pods -w"
+    },
+    {
+      "texto": "Apague um dos pods e veja o Kubernetes recriar outro sozinho.",
+      "comando": "kubectl delete $(kubectl get pods -l app=loja -o name | head -1)"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "O Deployment loja existe",
+      "comando": "kubectl get deployment loja",
+      "dica": "kubectl create deployment loja --image=nginx"
+    },
+    {
+      "texto": "Tem 3 réplicas prontas",
+      "comando": "[ \"$(kubectl get deployment loja -o jsonpath='{.status.readyReplicas}')\" = 3 ]",
+      "dica": "Use --replicas=3 ou kubectl scale deployment loja --replicas=3. Espere os pods ficarem Running."
+    }
+  ],
+  "solucao": [
+    "kubectl create deployment loja --image=nginx --replicas=3"
+  ],
+  "limpeza": [
+    "kubectl delete deployment loja --ignore-not-found"
+  ]
+}

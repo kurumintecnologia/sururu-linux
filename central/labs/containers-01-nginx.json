@@ -1,0 +1,46 @@
+{
+  "id": "containers-01-nginx",
+  "trilha": "containers",
+  "ordem": 1,
+  "titulo": "Seu primeiro container",
+  "nivel": "iniciante",
+  "tempo": 10,
+  "precisa": [
+    "docker"
+  ],
+  "prova": false,
+  "resumo": "Subir um servidor web com Docker em um comando.",
+  "historia": "A pousada de Maragogi quer um site no ar hoje. Você vai mostrar que dá pra fazer isso em segundos.",
+  "passos": [
+    {
+      "texto": "Suba o nginx em segundo plano, com o nome pousada, na porta 8080.",
+      "comando": "docker run -d --name pousada -p 8080:80 nginx"
+    },
+    {
+      "texto": "Veja o container rodando.",
+      "comando": "docker ps"
+    },
+    {
+      "texto": "Abra no navegador ou teste no terminal.",
+      "comando": "curl http://localhost:8080"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "Existe um container chamado pousada rodando",
+      "comando": "docker ps --filter name=^pousada$ --format '{{.Names}}' | grep -qx pousada",
+      "dica": "Use --name pousada no docker run."
+    },
+    {
+      "texto": "O site responde na porta 8080",
+      "comando": "curl -fs http://localhost:8080 | grep -qi nginx",
+      "dica": "O -p 8080:80 liga a porta 8080 da máquina à porta 80 do container."
+    }
+  ],
+  "solucao": [
+    "docker run -d --name pousada -p 8080:80 nginx"
+  ],
+  "limpeza": [
+    "docker rm -f pousada"
+  ]
+}

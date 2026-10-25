@@ -21,11 +21,12 @@ jobs:
       - name: Dependências
         run: |
           apt-get update
-          apt-get install -y live-build xorriso curl ca-certificates qemu-system-x86
+          apt-get install -y live-build xorriso curl ca-certificates qemu-system-x86 make python3
 
       - name: Build
         run: |
           chmod +x auto/* config/hooks/live/*.hook.chroot scripts/*.sh
+          make prepare
           lb config
           lb build 2>&1 | tee build.log
 

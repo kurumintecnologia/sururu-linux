@@ -1,0 +1,50 @@
+{
+  "id": "linux-02-script",
+  "trilha": "linux",
+  "ordem": 2,
+  "titulo": "Seu primeiro script",
+  "nivel": "iniciante",
+  "tempo": 10,
+  "precisa": [],
+  "prova": false,
+  "resumo": "Escrever um script em Bash e torná-lo executável.",
+  "historia": "Seu Zé quer um programinha que dê bom dia aos clientes da bodega.",
+  "passos": [
+    {
+      "texto": "Crie o script com um editor (nano é o mais simples).",
+      "comando": "nano ~/bodega/bomdia.sh"
+    },
+    {
+      "texto": "Escreva estas duas linhas, salve com Ctrl+O e saia com Ctrl+X.",
+      "comando": "#!/bin/bash\necho \"Bom dia, Alagoas!\""
+    },
+    {
+      "texto": "Dê permissão de execução.",
+      "comando": "chmod +x ~/bodega/bomdia.sh"
+    },
+    {
+      "texto": "Rode o script.",
+      "comando": "~/bodega/bomdia.sh"
+    }
+  ],
+  "verificacoes": [
+    {
+      "texto": "O script existe e é executável",
+      "comando": "test -x ~/bodega/bomdia.sh",
+      "dica": "chmod +x deixa o arquivo executável."
+    },
+    {
+      "texto": "Ele diz \"Bom dia, Alagoas!\"",
+      "comando": "~/bodega/bomdia.sh | grep -q 'Bom dia, Alagoas!'",
+      "dica": "Confira a primeira linha (#!/bin/bash) e o texto do echo."
+    }
+  ],
+  "solucao": [
+    "mkdir -p ~/bodega",
+    "printf '#!/bin/bash\\necho \"Bom dia, Alagoas!\"\\n' > ~/bodega/bomdia.sh",
+    "chmod +x ~/bodega/bomdia.sh"
+  ],
+  "limpeza": [
+    "rm -f ~/bodega/bomdia.sh"
+  ]
+}

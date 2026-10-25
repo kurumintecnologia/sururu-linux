@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Central Sururu
+GenericName=Laboratórios de Linux e Kubernetes
+Comment=Crie seu cluster e faça laboratórios guiados com correção automática
+Exec=sururu-central
+Icon=sururu
+Terminal=false
+Categories=Education;Development;System;
+Keywords=kubernetes;docker;containers;linux;cka;lfcs;cluster;laboratório;
+StartupNotify=false
