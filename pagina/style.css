@@ -15,7 +15,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--fundo); color: var(--texto); font: 17px/1.6 var(--fonte); -webkit-font-smoothing: antialiased; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--mangue); }
 :focus-visible { outline: 3px solid var(--sol); outline-offset: 3px; border-radius: 4px; }
 h1, h2, h3 { line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 .5em; }
