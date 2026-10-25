@@ -50,7 +50,11 @@ prepare: arte
 	install -d $(INC)/etc/systemd/system/docker.service.d $(INC)/etc/firefox-esr/policies
 	cp packaging/systemd/sururu-docker-live.service $(INC)/etc/systemd/system/
 	cp packaging/systemd/docker-sururu.conf $(INC)/etc/systemd/system/docker.service.d/sururu.conf
+	install -d $(INC)/etc/firefox/policies $(INC)/usr/lib/firefox-esr/distribution
 	cp packaging/firefox/policies.json $(INC)/etc/firefox-esr/policies/
+	cp packaging/firefox/policies.json $(INC)/etc/firefox/policies/
+	cp packaging/firefox/policies.json $(INC)/usr/lib/firefox-esr/distribution/
+	cp packaging/firefox/sururu-prefs.js $(INC)/etc/firefox-esr/
 	cp artwork/boot/plymouth-logo.png $(INC)/usr/share/sururu/boot/sururu-avatar.png
 	cp artwork/boot/plymouth-logo.png $(INC)/etc/skel/.face
 	./scripts/tema-boot.sh

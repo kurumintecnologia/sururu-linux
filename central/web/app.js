@@ -227,15 +227,24 @@ async function acompanhar(jobId, botao) {
   atualizarCluster();
 }
 
+/* Guardar o botão ANTES do await: depois dele, e.currentTarget vira null. */
 $("#criar").addEventListener("click", async (e) => {
+  const botao = e.currentTarget;
   const workers = Number(document.querySelector("input[name=workers]:checked").value);
-  const r = await api("cluster/criar", { method: "POST", body: { workers } });
-  acompanhar(r.job, e.currentTarget);
+  botao.disabled = true;
+  try {
+    const r = await api("cluster/criar", { method: "POST", body: { workers } });
+    acompanhar(r.job, botao);
+  } catch (err) {
+    botao.disabled = false;
+    avisar("Não consegui falar com a Central. Feche e abra de novo pelo menu.");
+  }
 });
 $("#apagar").addEventListener("click", async (e) => {
+  const botao = e.currentTarget;
   if (!confirm("Apagar o cluster sururu? Tudo que está nele será perdido.")) return;
   const r = await api("cluster/apagar", { method: "POST" });
-  acompanhar(r.job, e.currentTarget);
+  acompanhar(r.job, botao);
 });
 
 /* ---------- labs */
