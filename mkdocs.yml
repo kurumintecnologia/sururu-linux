@@ -17,13 +17,13 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
-      accent: amber
+      primary: custom
+      accent: custom
       toggle: { icon: material/weather-night, name: Modo escuro }
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: teal
-      accent: amber
+      primary: custom
+      accent: custom
       toggle: { icon: material/weather-sunny, name: Modo claro }
   features:
     - navigation.instant
@@ -40,6 +40,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed: { alternate_style: true }
   - attr_list
+  - md_in_html
   - toc: { permalink: true }
 
 nav:

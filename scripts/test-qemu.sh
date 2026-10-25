@@ -26,7 +26,7 @@ fi
 
 if [ "${HEADLESS:-0}" = "1" ]; then
   # shellcheck disable=SC2086
-  timeout 600 qemu-system-x86_64 $ACCEL $FIRMWARE -m 3072 -smp 2 -cdrom "$ISO" \
+  timeout "${BOOT_TIMEOUT:-600}" qemu-system-x86_64 $ACCEL $FIRMWARE -m 3072 -smp 2 -cdrom "$ISO" \
     -boot d -nographic -serial mon:stdio 2>/dev/null \
     | tee boot.log | grep -m1 -q "login:" && echo "BOOT OK" || { echo "BOOT FALHOU"; exit 1; }
 else

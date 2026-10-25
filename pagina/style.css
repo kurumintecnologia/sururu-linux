@@ -123,3 +123,19 @@ pre { background: var(--lagoa-funda); color: var(--agua); border-radius: 10px; p
   .heroi::after { background: linear-gradient(180deg, rgba(11, 42, 46, .85) 0%, rgba(11, 42, 46, .7) 60%, rgba(11, 42, 46, .4) 100%); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Pague um café */
+.cafe {
+  display: flex; gap: 32px; align-items: center; margin-top: 56px; padding: 32px;
+  border-radius: 16px; background: var(--agua); border: 1px solid var(--linha);
+}
+.cafe img { background: #fff; padding: 10px; border-radius: 12px; flex: none; }
+.cafe p { color: var(--suave); }
+.cafe .chave { color: var(--texto); font-size: 1.05rem; }
+.cafe .chave b { font-family: var(--mono); font-weight: 600; }
+.acoes-pix { display: flex; flex-wrap: wrap; gap: 12px; margin: 6px 0 16px; }
+.acoes-pix .botao { font: inherit; font-weight: 600; cursor: pointer; color: var(--lagoa); }
+.acoes-pix .botao.principal { color: var(--lagoa-funda); }
+.miudo-escuro { font-size: .9rem; }
+.copiado { color: var(--mangue); font-weight: 600; min-height: 1.5em; margin: 0; }
+@media (max-width: 900px) { .cafe { flex-direction: column; align-items: flex-start; } }

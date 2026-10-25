@@ -1,11 +1,45 @@
-:root {
+:root, [data-md-color-primary="custom"] {
   --md-primary-fg-color: #0F3B40;
   --md-primary-fg-color--light: #2F7A63;
   --md-primary-fg-color--dark: #0B2A2E;
+  --md-primary-bg-color: #E7F1EF;
+  --md-primary-bg-color--light: #A9C9D0;
+}
+[data-md-color-accent="custom"] {
   --md-accent-fg-color: #F2B134;
+  --md-accent-fg-color--transparent: rgba(242, 177, 52, .12);
+  --md-accent-bg-color: #0B2A2E;
+}
+[data-md-color-scheme="default"] {
+  --md-typeset-a-color: #24614F;
+  --md-default-fg-color: #15302F;
 }
 [data-md-color-scheme="slate"] {
   --md-default-bg-color: #0C1E24;
+  --md-default-fg-color: #E2EFEC;
+  --md-typeset-a-color: #6BC4A3;
+  --md-code-bg-color: #12292F;
+}
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
   --md-primary-fg-color: #12292F;
 }
+
+/* títulos com peso, como no site e na Central */
+.md-typeset h1 { font-weight: 600; color: var(--md-default-fg-color); letter-spacing: -0.01em; }
+.md-typeset h2 { font-weight: 600; color: var(--md-default-fg-color); }
+.md-typeset h3 { font-weight: 600; }
+.md-typeset .headerlink { color: var(--md-default-fg-color--lighter); }
+
+/* rodapé na cor da lagoa funda */
+.md-footer, .md-footer-meta { background-color: #0B2A2E; }
+.md-header { box-shadow: none; }
 .md-typeset img { border-radius: 10px; }
+.md-typeset .md-button--primary { background: #F2B134; border-color: #F2B134; color: #0B2A2E; }
+
+/* bloco do Pix na página de apoio */
+.md-typeset .pix { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;
+  border: 1px solid var(--md-default-fg-color--lightest); border-radius: 12px; padding: 20px; }
+.md-typeset .pix > p:first-child { margin: 0; }
+.md-typeset .pix img { background: #fff; padding: 8px; border-radius: 10px; }
+.md-typeset .pix > div { flex: 1; min-width: 260px; }
+.md-typeset .pix pre code { white-space: pre-wrap; word-break: break-all; }

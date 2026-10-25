@@ -6,3 +6,5 @@ if command -v plymouth-set-default-theme >/dev/null 2>&1 \
   plymouth-set-default-theme sururu
   update-initramfs -u -k all
 fi
+
+exit 0

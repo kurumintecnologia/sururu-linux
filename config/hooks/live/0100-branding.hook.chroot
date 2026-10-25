@@ -21,3 +21,5 @@ Sururu Linux 2027 "Isaac" — baseado em Debian \n \l
 EOF
 
 echo "sururu" > /etc/hostname
+
+exit 0

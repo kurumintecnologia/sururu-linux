@@ -28,3 +28,5 @@ chmod 0755 "$BIN"/kubectl "$BIN"/kind
 kubectl completion bash > /etc/bash_completion.d/kubectl
 helm completion bash > /etc/bash_completion.d/helm
 rm -rf "$TMP"
+
+exit 0

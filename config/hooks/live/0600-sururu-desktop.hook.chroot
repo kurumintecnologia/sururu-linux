@@ -21,3 +21,5 @@ done
 
 # Docker liga sozinho no boot (o kind precisa dele)
 systemctl enable docker.service 2>/dev/null || true
+
+exit 0

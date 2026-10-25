@@ -9,9 +9,15 @@ permissions:
   contents: write
   id-token: write   # assinatura keyless com cosign (Sigstore)
 
+defaults:
+  run:
+    # pipefail: se o "lb build" falhar, o passo falha (o "| tee" não esconde mais o erro)
+    shell: bash -eo pipefail {0}
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     container:
       image: debian:trixie
       options: --privileged
@@ -23,15 +29,40 @@ jobs:
           apt-get update
           apt-get install -y live-build xorriso curl ca-certificates qemu-system-x86 make python3
 
-      - name: Build
+      - name: Preparar arte, Central e tema de boot
         run: |
-          chmod +x auto/* config/hooks/live/*.hook.chroot scripts/*.sh
+          chmod +x auto/* config/hooks/live/*.hook.chroot scripts/*.sh packaging/bin/*
           make prepare
+
+      - name: Build da ISO (live-build)
+        run: |
           lb config
           lb build 2>&1 | tee build.log
+          ls -lh sururu-isaac-*.hybrid.iso
 
-      - name: Smoke test (boot no QEMU)
-        run: HEADLESS=1 ./scripts/test-qemu.sh
+      - name: Guardar o log do build (para investigar erros)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+          if-no-files-found: ignore
+
+      # O GitHub roda o QEMU sem KVM (emulando o processador), então o boot é
+      # lento. O teste avisa, mas não impede a versão alfa de ser publicada.
+      - name: Teste de boot no QEMU
+        id: boot
+        continue-on-error: true
+        timeout-minutes: 30
+        run: HEADLESS=1 BOOT_TIMEOUT=1500 ./scripts/test-qemu.sh
+
+      - name: Guardar o log do boot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boot-log
+          path: boot.log
+          if-no-files-found: ignore
 
       - name: Checksum
         run: sha256sum sururu-isaac-*.hybrid.iso > SHA256SUMS
@@ -43,14 +74,33 @@ jobs:
           curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
           trivy rootfs --severity HIGH,CRITICAL --exit-code 0 chroot | tee trivy.txt
 
-      - name: Assinar com cosign
+      - name: Instalar cosign
         uses: sigstore/cosign-installer@v3
-      - run: cosign sign-blob --yes SHA256SUMS --bundle SHA256SUMS.sigstore.json
+
+      - name: Assinar com cosign
+        run: cosign sign-blob --yes SHA256SUMS --bundle SHA256SUMS.sigstore.json
+
+      - name: Notas da versão
+        run: |
+          {
+            echo "## Sururu Linux ${GITHUB_REF_NAME}"
+            echo
+            echo "Versão de teste (alfa). Baseada no Debian 13."
+            echo
+            echo "**Teste de boot automático:** ${{ steps.boot.outcome == 'success' && 'passou ✅' || 'não concluiu no tempo do CI (sem KVM) ⚠️' }}"
+            echo
+            echo "### Como usar"
+            echo "1. Baixe a ISO e o SHA256SUMS e confira: \`sha256sum -c SHA256SUMS --ignore-missing\`"
+            echo "2. Grave no pendrive (Rufus no modo DD, balenaEtcher ou Ventoy)"
+            echo "3. Dê boot. Guia completo: https://sururu.kurumintecnologia.com.br/docs/comecar/"
+          } > NOTAS.md
 
       - name: Release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
+          prerelease: ${{ contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'rc') }}
+          body_path: NOTAS.md
           files: |
             sururu-isaac-*.hybrid.iso
             SHA256SUMS

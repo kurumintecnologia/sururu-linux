@@ -51,11 +51,16 @@ if [ -d "$ORIG" ] && [ -f "$ORIG/branding.desc" ]; then
   grep -E '^[[:space:]]+(productLogo|productIcon|productWelcome):' "$D" \
     | sed -E 's/^[^:]+:[[:space:]]*"?([^"]+)"?.*/\1/' | while read -r img; do
       case "$img" in /*) alvo="$img" ;; *) alvo="$DEST/$img" ;; esac
-      [ -f "$LOGO" ] && cp "$LOGO" "$alvo"
+      if [ -f "$LOGO" ]; then cp "$LOGO" "$alvo"; fi
     done
-  [ -f "$LOGO" ] && cp "$LOGO" "$DEST/logo.png"
-  [ -f /usr/share/sururu/calamares/show.qml ] && cp /usr/share/sururu/calamares/show.qml "$DEST/show.qml"
+  if [ -f "$LOGO" ]; then cp "$LOGO" "$DEST/logo.png"; fi
+  if [ -f /usr/share/sururu/calamares/show.qml ]; then
+    cp /usr/share/sururu/calamares/show.qml "$DEST/show.qml"
+  fi
   for s in /etc/calamares/settings.conf /usr/share/calamares/settings.conf; do
-    [ -f "$s" ] && sed -i -E 's/^branding:.*/branding: sururu/' "$s"
+    if [ -f "$s" ]; then sed -i -E 's/^branding:.*/branding: sururu/' "$s"; fi
   done
 fi
+
+# Um hook que termina com código diferente de zero derruba o build inteiro
+exit 0
