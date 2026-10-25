@@ -1,0 +1,11 @@
+Bem-vindo ao Sururu Linux 2027 "Isaac"!
+
+Já vem com kubectl, helm, k9s, kind, podman e containerd.
+
+Crie seu primeiro cluster de estudo:
+
+    kind create cluster --name lab
+    kubectl get nodes
+    k9s
+
+Laboratórios guiados: Escola Kurumin — https://kurumintecnologia.com.br/

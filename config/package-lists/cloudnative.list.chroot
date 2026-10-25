@@ -1,0 +1,13 @@
+# Ferramentas cloud native disponíveis nos repositórios do Debian.
+# kubectl, helm, k9s, kind e k3s vêm do binário oficial (hook 0500), porque o
+# Debian não empacota todos ou empacota versões antigas.
+containerd
+podman
+buildah
+skopeo
+jq
+yq
+bash-completion
+tmux
+openssh-client
+qemu-system-x86

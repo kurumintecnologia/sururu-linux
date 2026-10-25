@@ -1,0 +1,17 @@
+#!/bin/sh
+# Configuração do live-build — Sururu Linux (codinome Isaac)
+# Base: Debian 13 "trixie" estável. Kernel, grub e shim assinados vêm do Debian
+# (Secure Boot funciona sem compilar nada nosso).
+set -e
+
+lb config noauto \
+  --distribution trixie \
+  --archive-areas "main contrib non-free-firmware" \
+  --debian-installer none \
+  --bootappend-live "boot=live components quiet splash console=tty0 console=ttyS0,115200 locales=pt_BR.UTF-8 keyboard-layouts=br timezone=America/Sao_Paulo" \
+  --iso-application "Sururu Linux" \
+  --iso-publisher "Kurumin Tecnologia" \
+  --iso-volume "SURURU_ISAAC" \
+  --image-name "sururu-isaac" \
+  --memtest none \
+  "${@}"

@@ -1,0 +1,23 @@
+#!/bin/sh
+# Identidade da distro. Mantém ID_LIKE=debian para que ferramentas reconheçam a base.
+set -e
+
+cat > /etc/os-release <<'EOF'
+PRETTY_NAME="Sururu Linux 2027 (Isaac)"
+NAME="Sururu Linux"
+VERSION_ID="2027.1"
+VERSION="2027.1 (Isaac)"
+VERSION_CODENAME=isaac
+ID=sururu
+ID_LIKE=debian
+HOME_URL="https://kurumintecnologia.com.br/"
+SUPPORT_URL="https://kurumintecnologia.com.br/"
+BUG_REPORT_URL="https://github.com/kurumintecnologia/sururu-linux/issues"
+EOF
+
+cat > /etc/issue <<'EOF'
+Sururu Linux 2027 "Isaac" — baseado em Debian \n \l
+
+EOF
+
+echo "sururu" > /etc/hostname

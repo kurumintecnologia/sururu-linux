@@ -1,0 +1,30 @@
+#!/bin/sh
+# Instala as ferramentas de Kubernetes a partir dos binários oficiais.
+# Versões fixas = build reproduzível. O Renovate (ou você) atualiza estas linhas.
+set -e
+
+KUBECTL_VERSION="v1.34.1"
+HELM_VERSION="v3.19.0"
+K9S_VERSION="v0.50.15"
+KIND_VERSION="v0.30.0"
+
+ARCH=amd64
+BIN=/usr/local/bin
+TMP=$(mktemp -d)
+
+curl -fsSLo "$BIN/kubectl" "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl"
+curl -fsSLo "$TMP/kubectl.sha256" "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl.sha256"
+echo "$(cat "$TMP/kubectl.sha256")  $BIN/kubectl" | sha256sum -c -
+
+curl -fsSL "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" | tar -xz -C "$TMP"
+install -m 0755 "$TMP/linux-${ARCH}/helm" "$BIN/helm"
+
+curl -fsSL "https://github.com/derailed/k9s/releases/download/${K9S_VERSION}/k9s_Linux_${ARCH}.tar.gz" | tar -xz -C "$TMP" k9s
+install -m 0755 "$TMP/k9s" "$BIN/k9s"
+
+curl -fsSLo "$BIN/kind" "https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-${ARCH}"
+
+chmod 0755 "$BIN"/kubectl "$BIN"/kind
+kubectl completion bash > /etc/bash_completion.d/kubectl
+helm completion bash > /etc/bash_completion.d/helm
+rm -rf "$TMP"

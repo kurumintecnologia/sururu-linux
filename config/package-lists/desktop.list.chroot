@@ -1,0 +1,6 @@
+# Desktop leve (XFCE) — troque por kde-plasma-desktop se quiser algo mais pesado
+task-xfce-desktop
+lightdm
+firefox-esr
+network-manager-gnome
+fonts-noto

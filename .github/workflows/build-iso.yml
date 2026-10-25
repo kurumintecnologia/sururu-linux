@@ -1,0 +1,58 @@
+name: Build ISO
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write   # assinatura keyless com cosign (Sigstore)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:trixie
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dependências
+        run: |
+          apt-get update
+          apt-get install -y live-build xorriso curl ca-certificates qemu-system-x86
+
+      - name: Build
+        run: |
+          chmod +x auto/* config/hooks/live/*.hook.chroot scripts/*.sh
+          lb config
+          lb build 2>&1 | tee build.log
+
+      - name: Smoke test (boot no QEMU)
+        run: HEADLESS=1 ./scripts/test-qemu.sh
+
+      - name: Checksum
+        run: sha256sum sururu-isaac-*.hybrid.iso > SHA256SUMS
+
+      - name: SBOM (Syft) e varredura (Trivy)
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+          syft dir:chroot -o spdx-json > sbom.spdx.json
+          curl -sSfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+          trivy rootfs --severity HIGH,CRITICAL --exit-code 0 chroot | tee trivy.txt
+
+      - name: Assinar com cosign
+        uses: sigstore/cosign-installer@v3
+      - run: cosign sign-blob --yes SHA256SUMS --bundle SHA256SUMS.sigstore.json
+
+      - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            sururu-isaac-*.hybrid.iso
+            SHA256SUMS
+            SHA256SUMS.sigstore.json
+            sbom.spdx.json
+            trivy.txt

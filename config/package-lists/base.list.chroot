@@ -1,0 +1,18 @@
+# Sistema base, live e instalador gráfico
+live-boot
+live-config
+live-config-systemd
+calamares
+calamares-settings-debian
+firmware-linux-free
+firmware-misc-nonfree
+locales
+console-setup
+keyboard-configuration
+sudo
+network-manager
+curl
+wget
+git
+vim
+htop
