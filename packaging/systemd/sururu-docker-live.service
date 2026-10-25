@@ -1,0 +1,14 @@
+[Unit]
+Description=Sururu: espaço do Docker na RAM (só no modo live)
+DefaultDependencies=no
+After=local-fs.target
+Before=docker.service containerd.service docker.socket
+ConditionPathIsDirectory=/run/live/medium
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/sururu-docker-live
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+{
+  "policies": {
+    "DisableTelemetry": true,
+    "DontCheckDefaultBrowser": true,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": "",
+    "UserMessaging": {
+      "WhatsNew": false,
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "MoreFromMozilla": false,
+      "SkipOnboarding": true
+    },
+    "Preferences": {
+      "datareporting.policy.dataSubmissionPolicyBypassNotification": { "Value": true, "Status": "locked" },
+      "browser.aboutwelcome.enabled": { "Value": false, "Status": "locked" }
+    }
+  }
+}

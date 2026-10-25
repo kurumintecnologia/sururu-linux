@@ -1,0 +1,13 @@
+#!/bin/sh
+# Modo live: o "disco" é um overlay na RAM e o Docker não consegue usar o
+# overlay2 em cima dele (cai no vfs, que copia cada camada inteira e enche tudo).
+# Damos ao Docker um tmpfs próprio, onde o overlay2 funciona e gasta pouco.
+# Só ocupa RAM conforme as imagens são baixadas.
+set -e
+[ -d /run/live/medium ] || exit 0              # instalado no disco: nada a fazer
+mountpoint -q /var/lib/docker && exit 0         # já montado
+MEM_KB=$(awk '/^MemTotal:/ {print $2}' /proc/meminfo)
+TAM_KB=$((MEM_KB * 60 / 100))                   # até 60% da RAM
+mkdir -p /var/lib/docker
+mount -t tmpfs -o "size=${TAM_KB}k,mode=0710" tmpfs /var/lib/docker
+echo "sururu: /var/lib/docker em tmpfs de $((TAM_KB / 1024)) MB (modo live)"

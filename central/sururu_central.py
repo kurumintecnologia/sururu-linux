@@ -39,7 +39,7 @@ CLUSTER = "sururu"
 TOKEN = secrets.token_urlsafe(24)
 PORTA = 8787
 # Espaço que o kind precisa para baixar e descompactar a imagem do Kubernetes
-MINIMO_CLUSTER_GB = float(os.environ.get("SURURU_MINIMO_GB", "6"))
+MINIMO_CLUSTER_GB = float(os.environ.get("SURURU_MINIMO_GB", "3"))
 
 JOBS: dict[str, dict] = {}
 JOBS_LOCK = threading.Lock()
@@ -173,7 +173,9 @@ def info_ferramentas() -> list[dict]:
 def docker_ok() -> dict:
     if not shutil.which("docker"):
         return {"ok": False, "motivo": "sem_docker"}
-    cod, saida = rodar(["docker", "info", "--format", "{{.ServerVersion}}"], timeout=5)
+    # O Docker do Debian liga por socket: a primeira chamada acorda o serviço,
+    # o que pode levar alguns segundos. Por isso o tempo maior.
+    cod, saida = rodar(["docker", "info", "--format", "{{.ServerVersion}}"], timeout=30)
     if cod == 0:
         return {"ok": True}
     if "permission denied" in saida.lower():

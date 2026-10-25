@@ -186,7 +186,7 @@ let forcarCriacao = false;
 function avisoEspaco() {
   $("#espaco-alerta")?.remove();
   const s = ESTADO.sistema;
-  const minimo = ESTADO.minimo_cluster_gb || 6;
+  const minimo = ESTADO.minimo_cluster_gb || 3;
   const pouco = s.containers_livre_gb < minimo;
   $("#criar").disabled = pouco && !forcarCriacao;
   if (!pouco) return;

@@ -47,6 +47,10 @@ prepare: arte
 	cp artwork/boot/splash-*.png $(INC)/usr/share/sururu/boot/
 	cp packaging/grub/sururu.cfg $(INC)/etc/default/grub.d/
 	cp packaging/calamares/show.qml $(INC)/usr/share/sururu/calamares/
+	install -d $(INC)/etc/systemd/system/docker.service.d $(INC)/etc/firefox-esr/policies
+	cp packaging/systemd/sururu-docker-live.service $(INC)/etc/systemd/system/
+	cp packaging/systemd/docker-sururu.conf $(INC)/etc/systemd/system/docker.service.d/sururu.conf
+	cp packaging/firefox/policies.json $(INC)/etc/firefox-esr/policies/
 	cp artwork/boot/plymouth-logo.png $(INC)/usr/share/sururu/boot/sururu-avatar.png
 	cp artwork/boot/plymouth-logo.png $(INC)/etc/skel/.face
 	./scripts/tema-boot.sh

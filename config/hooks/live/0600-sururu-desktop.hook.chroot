@@ -22,4 +22,7 @@ done
 # Docker liga sozinho no boot (o kind precisa dele)
 systemctl enable docker.service 2>/dev/null || true
 
+# Modo live: espaço próprio do Docker na RAM (ver /usr/bin/sururu-docker-live)
+systemctl enable sururu-docker-live.service 2>/dev/null || true
+
 exit 0
