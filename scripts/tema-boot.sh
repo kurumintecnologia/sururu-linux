@@ -30,7 +30,7 @@ find "$DESTINO" -type l | while read -r link; do
 done
 
 # 1. Fundo: troca o splash SVG (com o capacete) pelo nosso PNG
-find "$DESTINO" \( -name 'splash.svg' -o -name 'splash.svg.in' \) -delete
+find "$DESTINO" -type f \( -name 'splash.svg' -o -name 'splash.svg.in' \) -delete
 find "$DESTINO" -mindepth 1 -type d | while read -r dir; do
   case "$dir" in
     *isolinux*|*syslinux*|*extlinux*|*pxelinux*) cp "$ARTE/splash-4x3.png" "$dir/splash.png" ;;
@@ -39,7 +39,7 @@ find "$DESTINO" -mindepth 1 -type d | while read -r dir; do
 done
 
 # 2. Cores do tema do GRUB (nácar, sol de Alagoas e lagoa)
-find "$DESTINO" -name 'theme.txt' | while read -r t; do
+find "$DESTINO" -type f -name 'theme.txt' | while read -r t; do
   sed -i -E \
     -e 's/(^|[[:space:]])(item_color[[:space:]]*=[[:space:]]*)"[^"]*"/\1\2"#A9C9D0"/' \
     -e 's/(selected_item_color[[:space:]]*=[[:space:]]*)"[^"]*"/\1"#F2B134"/' \
@@ -52,7 +52,7 @@ find "$DESTINO" -name 'theme.txt' | while read -r t; do
 done
 
 # 3. Cores do menu do isolinux
-find "$DESTINO" -name 'stdmenu.cfg' | while read -r m; do
+find "$DESTINO" -type f -name 'stdmenu.cfg' | while read -r m; do
   sed -i -E \
     -e 's/^(menu color sel[[:space:]]+).*/\1* #ff0f3b40 #fff2b134 none/' \
     -e 's/^(menu color unsel[[:space:]]+).*/\1* #ffe7f1ef #00000000 none/' \
@@ -63,7 +63,7 @@ find "$DESTINO" -name 'stdmenu.cfg' | while read -r m; do
 done
 
 # 4. Nomes em português no menu
-find "$DESTINO" -name '*.cfg' | while read -r c; do
+find "$DESTINO" -type f -name '*.cfg' | while read -r c; do
   sed -i -E \
     -e 's/Live system \(([^)]*) fail-safe mode\)/Sururu Linux em modo de segurança (\1)/g' \
     -e 's/Live system \(fail-safe mode\)/Sururu Linux em modo de segurança/g' \
