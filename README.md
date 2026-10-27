@@ -1,4 +1,4 @@
-[![GitHub Releases Downloads](https://img.shields.io/github/downloads/kurumintecnologia/sururu-linux/total.svg?style=flat-square&color=blue)](https://github.com/kurumintecnologia/sururu-linux/releases)
+[![GitHub Releases Downloads](https://img.shields.io/github/downloads/kurumintecnologia/sururu-linux/total.svg?style=flat-square&color=blue)](https://github.com/kurumintecnologia/sururu-linux/releases) [![GitHub Release](https://img.shields.io/github/v/release/kurumintecnologia/sururu-linux?style=flat-square&color=green)](https://github.com/kurumintecnologia/sururu-linux/releases) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat-square)](https://gnu.org/licenses/gpl-3.0)
 
 <p align="center">
   <img src="artwork/sururu-logo.svg" alt="Sururu Linux" width="420">
