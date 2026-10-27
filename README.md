@@ -1,3 +1,5 @@
+[![GitHub Releases Downloads](https://img.shields.io/github/downloads/kurumintecnologia/sururu-linux/total.svg?style=flat-square&color=blue)](https://github.com/kurumintecnologia/sururu-linux/releases)
+
 <p align="center">
   <img src="artwork/sururu-logo.svg" alt="Sururu Linux" width="420">
 </p>
