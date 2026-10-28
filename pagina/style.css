@@ -116,7 +116,7 @@ pre { background: var(--lagoa-funda); color: var(--agua); border-radius: 10px; p
 .rodape .nota { font-size: .85rem; opacity: .8; }
 
 @media (max-width: 900px) {
-  .topo nav { display: none; }
+  .topo > nav { display: none; }
   .passos ol, .casos, .tres, .central, .escolas { grid-template-columns: 1fr; }
   .passos li:not(:last-child)::after { display: none; }
   .casos article, .casos article + article { padding: 24px 0; border-right: 0; border-bottom: 1px solid var(--linha); }
