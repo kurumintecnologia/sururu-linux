@@ -301,3 +301,9 @@ pre { background: var(--lagoa-funda); color: var(--agua); border-radius: 10px; p
   }
 
 }
+
+/* utilitários */
+.utilitarios { background: transparent; }
+.utilitarios code { font: .85em var(--mono); color: var(--lagoa); }
+.utilitarios .botao:not(.principal) { color: var(--lagoa); }
+.utilitarios .botao:not(.principal):hover { background: rgba(15, 59, 64, .06); }

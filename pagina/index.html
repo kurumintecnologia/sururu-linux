@@ -35,6 +35,7 @@
     <nav aria-label="Principal">
       <a href="#como">Como funciona</a>
       <a href="#central">Central</a>
+      <a href="#utilitarios">Utilitários</a>
       <a href="#escolas">Escolas</a>
       <a href="docs/">Documentação</a>
       <a href="https://github.com/kurumintecnologia/sururu-linux/discussions/1">Comunidade</a>
@@ -54,6 +55,7 @@
 
         <a href="#como">Como funciona</a>
         <a href="#central">Central</a>
+        <a href="#utilitarios">Utilitários</a>
         <a href="#escolas">Escolas</a>
         <a href="docs/">Documentação</a>
         <a href="https://github.com/kurumintecnologia/sururu-linux/discussions/1">Comunidade</a>
@@ -146,6 +148,29 @@ sururu-worker          Ready    &lt;none&gt;</code></pre>
         <code>Deployment, Service, ConfigMap, rollout</code>
       </article>
     </div>
+  </section>
+
+  <section class="central utilitarios" id="utilitarios">
+    <div class="central-texto">
+      <span class="trilha">Utilitários</span>
+      <h2>Ferramentas que já vêm junto</h2>
+      <p>Além dos laboratórios, o Sururu traz utilitários livres da Kurumin Tecnologia para o dia a dia de quem cuida de rede e servidor.</p>
+      <dl>
+        <dt>Kurumin Pulso · teste de rede</dt>
+        <dd>Mede latência, jitter, perda de pacotes, DNS, download e upload, e diz em português se o problema está na sua casa ou no provedor. Gera um relatório com gráficos e histórico.</dd>
+        <dt>Como usar</dt>
+        <dd>No terminal, <code>kurumin-pulso --rotulo wifi</code>. Para comparar com o seu plano, <code>kurumin-pulso --contratado 500/250</code>.</dd>
+        <dt>Quando chega</dt>
+        <dd>Vem instalado a partir da próxima versão do Sururu. Até lá, instale o pacote <code>.deb</code> em qualquer Debian ou Ubuntu.</dd>
+      </dl>
+      <div class="acoes" style="margin-top:28px">
+        <a class="botao principal" href="https://kurumintecnologia.com.br/ferramentas/">Conhecer o Kurumin Pulso</a>
+        <a class="botao" href="https://github.com/kurumintecnologia/kurumin-pulso">Código no GitHub</a>
+      </div>
+    </div>
+    <figure class="tela">
+      <img src="img/pulso-relatorio.png" alt="Relatório do Kurumin Pulso com a latência de cada pacote até o roteador, a Cloudflare e o Google" width="791" height="392" loading="lazy">
+    </figure>
   </section>
 
   <section class="escolas" id="escolas">
