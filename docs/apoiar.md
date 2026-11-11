@@ -14,19 +14,19 @@ medo do terminal, um café ajuda a manter o projeto vivo.
 
 <div markdown>
 
-**Chave Pix (e-mail):**
+**Chave Pix (CNPJ):**
 
 ```text
-engineer@tacio.cloud
+54940532000138
 ```
 
 **Ou Pix copia e cola** (abra o app do banco, escolha *Pix copia e cola* e cole):
 
 ```text
-00020126420014br.gov.bcb.pix0120engineer@tacio.cloud5204000053039865802BR5923TACIO SOUZA DE OLIVEIRA6007ARACAJU62100506SURURU63049E55
+00020126360014br.gov.bcb.pix0114549405320001385204000053039865802BR5923TACIO SOUZA DE OLIVEIRA6007ARACAJU62100506SURURU630486D0
 ```
 
-Quem recebe: **Tácio Souza de Oliveira**, mantenedor do projeto (Itaú). Confira
+Quem recebe: **Tácio Souza de Oliveira - ME**. Confira
 o nome no app antes de confirmar. O valor é você quem escolhe: qualquer quantia
 ajuda.
 
