@@ -10,7 +10,7 @@ from pathlib import Path
 import qrcode
 import qrcode.image.svg
 
-CHAVE = "engineer@tacio.cloud"
+CHAVE = "54940532000138"
 NOME = "TACIO SOUZA DE OLIVEIRA"   # até 25 caracteres, sem acento
 CIDADE = "ARACAJU"                 # até 15 caracteres, sem acento
 IDENTIFICADOR = "SURURU"           # aparece no extrato de quem recebe
